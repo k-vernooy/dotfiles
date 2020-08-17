@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mascot=$(cowsay -l | cut -d ':' -f 2- | tr ' ' '\n' | grep . | shuf -n 1)
+fortune -s | cowsay -f $mascot
+echo ""
+diskUsage=$(df -h / | tail -n 1 | tr ' ' '\n' | grep . | sed '5q;d')
+echo "Disk $diskUsage full..."
