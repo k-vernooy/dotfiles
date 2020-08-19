@@ -4,9 +4,9 @@ URxvt.cursorBlink: true
 URxvt.background: #000000
 
 ! special
-*.foreground: #93a1a1
+*.foreground: #eeeeee
 *.background: #141c21
-*.cursorColor: #afbfbf
+*.cursorColor: #eeeeee
 
 ! black
 *.color0: #263640
@@ -37,8 +37,8 @@ URxvt.background: #000000
 *.color14: #33c5ba
 
 ! white
-*.color7: #bfbaac
-*.color15: #fdf6e3
+*.color7: #eeeeee
+*.color15: #eeeeee
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard

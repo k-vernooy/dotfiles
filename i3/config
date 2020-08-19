@@ -4,11 +4,13 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar.
 font pango:DejaVu Sans Mono 8
 
+for_window [class=".*"] border pixel 1
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Start a URxvt terminal instance
-bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill focused window
 bindsym $mod+q kill
@@ -18,6 +20,9 @@ bindsym $mod+Shift+w exec rofi -show
 
 # Start rofi drun menu
 bindsym $mod+d exec rofi -show drun
+
+#
+bindsym $mod+l exec i3lock-fancy
 
 # Set up screenshots and partial screenshots
 bindsym --release Print exec "scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
@@ -116,14 +121,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
-bar {
-    status_command i3status
-}
+#bar {
+#    status_command i3status
+#}
 
 
 # Always float mpv windows
 for_window [class="mpv"] floating enable
 
 # Execute random wallpaper on login
-exec_always feh --randomize --bg-scale /home/kvernooy/Pictures/Wallpaper/firewatch/*
+# exec_always feh --randomize --bg-scale /home/kvernooy/Pictures/Wallpaper/firewatch/*
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
