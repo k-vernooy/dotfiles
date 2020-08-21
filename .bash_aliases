@@ -14,6 +14,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 ;s/[;&|]\s*alert$//'\'')"'
 
 alias i3-config="vim ~/.config/i3/config"
+alias xr-config="vim ~/.Xresources && xrdb ~/.Xresources"
 
 #=======================
 # Music playing aliases
