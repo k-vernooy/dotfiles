@@ -6,6 +6,11 @@ font pango:DejaVu Sans Mono 8
 
 for_window [class=".*"] border pixel 0
 
+gaps outer 10
+gaps inner 20
+smart_borders on
+client.focused          #00ff00 #285577 #FFFFFF #2222cc   #2222cc
+smart_gaps on
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -130,7 +135,7 @@ bindsym $mod+r mode "resize"
 for_window [class="mpv"] floating enable
 
 # Execute random wallpaper on login
-exec_always feh --randomize --bg-scale /home/kvernooy/Desktop/other/online/dynamic-wallpaper/images/* #/home/kvernooy/Pictures/Wallpaper/firewatch*
+#exec_always feh --randomize --bg-scale /home/kvernooy/Desktop/other/online/dynamic-wallpaper/images/* #/home/kvernooy/Pictures/Wallpaper/firewatch*
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always ~/Scripts/dbus-save.sh
 exec_always pkill compton; compton -f --config ~/.config/compton/compton.conf
