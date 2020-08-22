@@ -25,6 +25,18 @@ setGnomeDesktop() {
 
 
 mkdcd() {
-   mkdir $1
-   cd $1
+    mkdir $1
+    cd $1
+}
+
+
+webp() {
+    mkdir assets assets/css assets/js assets/img
+    touch index.html assets/css/index.css
+}
+
+
+svim() {
+    vim $1
+    source $1
 }

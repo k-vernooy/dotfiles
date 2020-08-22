@@ -51,4 +51,4 @@ URxvt.keysym.Control-Meta-v: builtin-string:
 URxvt.iso14755: false
 
 urxvt*depth:32
-urxvt*background:rgba:0000/0000/0000/aaaa
+urxvt*background:rgba:0000/0000/0000/8888
