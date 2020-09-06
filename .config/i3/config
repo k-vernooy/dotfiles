@@ -1,21 +1,28 @@
 # set the mod variable to super key
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar.
-font pango:DejaVu Sans Mono 8
-
+# Turn borders off
 for_window [class=".*"] border pixel 0
 
-gaps outer 10
-gaps inner 20
+# In case I ever enable borders
 smart_borders on
-client.focused          #00ff00 #285577 #FFFFFF #2222cc   #2222cc
-smart_gaps on
-# Use Mouse+$mod to drag floating windows to their wanted position
+
+# Change gap size
+gaps outer 0
+gaps inner 20
+# smart_gaps on
+
+# Drag floating windows
 floating_modifier $mod
 
 # Start a URxvt terminal instance
 bindsym $mod+Return exec urxvt
+
+# vscode, files, browser, notes shortcuts
+bindsym $mod+c exec code
+bindsym $mod+n exec nautilus
+bindsym $mod+t exec typora
+bindsym $mod+b exec firefox
 
 # Kill focused window
 bindsym $mod+q kill
@@ -26,18 +33,21 @@ bindsym $mod+Shift+w exec rofi -show
 # Start rofi drun menu
 bindsym $mod+d exec rofi -show drun
 
-#
-bindsym $mod+l exec i3lock-fancy
+# Bind to suckless lockscreen
+bindsym --release $mod+l exec slock
 
 # Set up screenshots and partial screenshots
-bindsym --release Print exec "scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
-bindsym --release Shift+Print exec "scrot -s ~/Pictures/Screenshots/%b%d::%H%M%S.png"
+bindsym --release Print exec gnome-screenshot -f ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Shift+Print exec gnome-screenshot -a -f ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Bind audio keys to pactl volume control
-# Note: remove second chained cmd to disable unmute on vol up
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 off
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+# Bind brightness keys to baclight interface
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Move focus with the arrow keys
 bindsym $mod+Left focus left
@@ -74,6 +84,10 @@ bindsym $mod+space focus mode_toggle
 # Focus the parent container
 bindsym $mod+a focus parent # (opt. child)
 
+# Bind keys to switch to next workspace
+bindsym $mod+bracketright workspace next
+bindsym $mod+bracketleft workspace prev
+
 # Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -107,35 +121,46 @@ bindsym $mod+Shift+r restart
 # Exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Resize window
-mode "resize" {
-    bindsym Left resize shrink width 10 px or 10
-    bindsym Down resize grow height 10 px or 10
-    bindsym Up resize shrink height 10 px or 10
-    bindsym Right resize grow width 10 px or 10
+# Add resize keybindings in place of mode
+bindsym $mod+Control+Left resize shrink width 10 px or 10
+bindsym $mod+Control+Down resize grow height 10 px or 10
+bindsym $mod+Control+Up resize shrink height 10 px or 10
+bindsym $mod+Control+Right resize grow width 10 px or 10
 
-    #bindsym $mod+Left resize shrink width 1 px
-    #bindsym $mod+Down resize grow height 1 px
-    #bindsym $mod+Up resize shrink height 1 px
-    #bindsym $mod+Right resize grow width 1 px
- 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+Shift+Control+Left resize shrink width 1 px or 1
+bindsym $mod+Shift+Control+Down resize grow height 1 px or 1
+bindsym $mod+Shift+Control+Up resize shrink height 1 px or 1
+bindsym $mod+Shift+Control+Right resize grow width 1 px or 1
 
-bindsym $mod+r mode "resize"
+# mpv music controller bindings
+set $controller ~/Scripts/mpv-controller.sh
+bindsym $mod+Shift+P exec $controller pause
+bindsym $mod+Shift+bracketleft exec $controller prev
+bindsym $mod+Shift+bracketright exec $controller next
+bindsym $mod+Shift+semicolon exec $controller skip -10
+bindsym $mod+Shift+apostrophe exec $controller skip 10
+bindsym $mod+Shift+comma exec $controller skipper -5
+bindsym $mod+Shift+period exec $controller skipper 5
+bindsym $mod+Shift+m exec $controller restart >> ~/Desktop/log
 
-# Start i3bar to display a workspace bar
-#bar {
-#    status_command i3status
-#}
+# Always float certain windows
+# for_window [class="mpv"] floating enable
 
+# Make sure fonts are loaded right
+exec_always xset +fp /home/kai/.fonts/
+exec_always xset fp rehash
 
-# Always float mpv windows
-for_window [class="mpv"] floating enable
+# Run startup wallpaper script
+exec_always bash -c "feh --bg-fill $(cat ~/Scripts/default-bg.txt | tr -d '\n')"
 
-# Execute random wallpaper on login
-#exec_always feh --randomize --bg-scale /home/kvernooy/Desktop/other/online/dynamic-wallpaper/images/* #/home/kvernooy/Pictures/Wallpaper/firewatch*
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always ~/Scripts/dbus-save.sh
-exec_always pkill compton; compton -f --config ~/.config/compton/compton.conf
+# Allow scripts to interface with dbus
+exec_always ~/Scripts/Xdbus.sh
+
+# Start notification daemon
+exec_always --no-startup-id dunst
+bindsym $mod+p exec pkill dunst
+
+# Startup various daemons
+exec_always --no-startup-id /usr/libexec/gsd-xsettings
+exec_always --no-startup-id pkill picom; picom
+exec_always --no-startup-id pkill polybar; polybar -r main
