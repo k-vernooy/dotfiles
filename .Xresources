@@ -1,6 +1,8 @@
-URxvt.font: xft:Liberation Mono For Powerline: size=10: antialiasing=true
+URxvt.font: xft:Fira Code: size=10: antialiasing=true
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
+URxvt.internalBorder: 0
+URxvt.urlLauncher: firefox
 
 Xft*dpi:                96
 Xft*antialias:          true
@@ -51,4 +53,5 @@ URxvt.keysym.Control-Meta-v: builtin-string:
 URxvt.iso14755: false
 
 urxvt*depth:32
-urxvt*background:rgba:0000/0000/0000/8888
+urxvt*background:rgba:0c00/1300/1f00/dddd
+!urxvt*background: #0c131f
