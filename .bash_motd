@@ -1,13 +1,8 @@
 #!/bin/bash
 
+# fet.sh
+# cat ~/Desktop/other/projects/ascii-trek/quotes/rules-of-acquisition.txt | shuf | head -n 1
+# cat ~/Desktop/other/projects/ascii-trek/ships/$(ls ~/Desktop/other/projects/ascii-trek/ships/ | shuf | head -n 1)
 
-# Several things can happen here:
-# - A RoA is selected
-# - A ship, logo or other plain art is selected
-# - A quote is selected
-# - A show is selected
-
-cat ~/Desktop/other/projects/ascii-trek/ships/$(ls ~/Desktop/other/projects/ascii-trek/ships/ | shuf | head -n 1)
-
-diskUsage=$(df -h / | tail -n 1 | tr ' ' '\n' | grep . | sed '5q;d')
-echo "Disk $diskUsage full..."
+#diskUsage=$(df -h / | tail -n 1 | tr ' ' '\n' | grep . | sed '5q;d')
+#echo "Disk $diskUsage full..."
