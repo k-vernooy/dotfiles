@@ -5,43 +5,71 @@
 # to pause/play, rewind/fast-forward, advance/go back,
 # and to restart the music process.
 # Depends on socat and bc.
-
 cmd=$1
 socket=/tmp/mpv-socket
+
 
 # Note: sources bash profile because this program
 #       relies on the 'mu' function, which plays
 #       my music directory on shuffle.
-
 . ~/.bash_profile
 
 
+# Add mpv socket command sender - takes property string
+getProp() {
+    echo "{ \"command\": [\"get_property\", \""$1"\"] }" | socat - $socket | jq .data
+}
+
+setProp() {
+    echo "{ \"command\": [\"set_property\", \""$1"\", \""$2"\"] }" | socat - $socket
+}
+
+cycleProp() {
+    echo "{ \"command\": [\"cycle\", \""$1"\"] }" | socat - $socket
+}
+
+
+# Get the truncated title
+getTitle() {
+    title=$(getProp 'media-title');
+    if [ "${#title}" -gt 35 ]; then
+        title="$(echo "$title" | cut -c 1-35)..."
+    fi
+    echo "$title"
+}
+
+
+# Set blank notification text
+notifyText=""
+
+
+# Apply different commands based on shell args
 if [ "$cmd" = "skip" ]; then
-    # Skip forward or backward $2 seconds
-    currentPos=$(echo '{ "command": ["get_property", "time-pos"] }' | socat - $socket | jq .data)
-    newPos=$(echo $currentPos + $2 | bc -l)
-    echo "{ \"command\": [\"set_property\", \"time-pos\", \""$newPos"\"] }" | socat - $socket
+    newPos=$(echo "$(getProp "time-pos")" + "$2" | bc -l)
+    setProp "time-pos" "$newPos"
 elif [ "$cmd" = "skipper" ]; then
-    # Skip forward or backward $2 percent
-    currentPos=$(echo '{ "command": ["get_property", "percent-pos"] }' | socat - $socket | jq .data)
-    newPos=$(echo $currentPos + $2 | bc -l)
-    echo "{ \"command\": [\"set_property\", \"percent-pos\", \""$newPos"\"] }" | socat - $socket
+    newPos=$(echo "$(getProp "percent-pos")" + "$2" | bc -l)
+    setProp "percent-pos" "$newPos"
 elif [ "$cmd" = "prev" ]; then
     echo 'playlist-prev' | socat - $socket
+    notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "next" ]; then
     echo 'playlist-next' | socat - $socket
+    notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "pause" ]; then
-    echo '{"command": ["cycle", "pause"]}' | socat - $socket
-    isPaused=$(echo '{"command": ["get_property", "pause"]}' | socat - $socket | jq .data)
-    title=$(echo '{"command": ["get_property", "media-title"]}' | socat - $socket | jq .data)
-    
-
-    if [ "$isPaused" = "true" ]; then
-        notify-send "Paused: $title" -a "Music" -u low
+    cycleProp "pause"
+    title=$(getTitle)
+    if [ "$(getProp 'pause')" = "true" ]; then
+        notifyText="Paused: $title"
     else
-        notify-send "Resumed: $title" -a "Music" -u low 
+        notifyText="Resumed $title" 
     fi
 elif [ "$cmd" = "restart" ]; then
     pkill -f "$HOME/Music"
     mu > /dev/null 2>&1 &
+fi
+
+
+if [ "$notifyText" != "" ]; then
+    notify-send "$notifyText" -a "Music" -u low -i deepin-music
 fi
