@@ -7,7 +7,7 @@
 # Depends on socat and bc.
 cmd=$1
 socket=/tmp/mpv-socket
-
+notifyText=""
 
 # Note: sources bash profile because this program
 #       relies on the 'mu' function, which plays
@@ -20,53 +20,43 @@ getProp() {
     echo "{ \"command\": [\"get_property\", \""$1"\"] }" | socat - $socket | jq .data
 }
 
-setProp() {
-    echo "{ \"command\": [\"set_property\", \""$1"\", \""$2"\"] }" | socat - $socket
+sendCmd() {
+    echo "$1" | socat - "$socket"
 }
-
-cycleProp() {
-    echo "{ \"command\": [\"cycle\", \""$1"\"] }" | socat - $socket
-}
-
 
 # Get the truncated title
 getTitle() {
+    while [ "$(getProp seeking | tr -d '\n')" == "null" ]; do
+        echo "waiting" > /dev/null
+    done
+    
     title=$(getProp 'media-title');
     if [ "${#title}" -gt 35 ]; then
         title="$(echo "$title" | cut -c 1-35)..."
     fi
-    echo "$title"
+    echo "$title\""
 }
-
-
-# Set blank notification text
-notifyText=""
 
 
 # Apply different commands based on shell args
 if [ "$cmd" = "skip" ]; then
-    newPos=$(echo "$(getProp "time-pos")" + "$2" | bc -l)
-    setProp "time-pos" "$newPos"
+    sendCmd "seek $2"
 elif [ "$cmd" = "skipper" ]; then
-    newPos=$(echo "$(getProp "percent-pos")" + "$2" | bc -l)
-    setProp "percent-pos" "$newPos"
+    sendCmd "seek $2 relative-percent"
 elif [ "$cmd" = "prev" ]; then
-    echo 'playlist-prev' | socat - $socket
+    sendCmd "playlist-prev"
     notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "next" ]; then
-    echo 'playlist-next' | socat - $socket
+    sendCmd "playlist-next"
     notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "pause" ]; then
-    cycleProp "pause"
-    title=$(getTitle)
-    if [ "$(getProp 'pause')" = "true" ]; then
-        notifyText="Paused: $title"
-    else
-        notifyText="Resumed $title" 
-    fi
-elif [ "$cmd" = "restart" ]; then
-    pkill -f "$HOME/Music"
-    mu > /dev/null 2>&1 &
+    sendCmd "cycle pause"
+elif [ "$cmd" = "stop" ]; then
+    sendCmd "stop" 
+elif [ "$cmd" = "start" ]; then
+    sendCmd "stop"
+    mu
+    notifyText="Playing $(getTitle)"
 fi
 
 
