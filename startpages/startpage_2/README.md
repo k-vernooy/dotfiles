@@ -1,4 +1,4 @@
-# Screenshot of this startpage
+# Cloned & Modified from @grtcdr/startpages
 
 ![Screenshot](screenshot.png)
 
