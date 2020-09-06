@@ -34,7 +34,7 @@ bindsym $mod+Shift+w exec rofi -show
 bindsym $mod+d exec rofi -show drun
 
 # Bind to suckless lockscreen
-bindsym --release $mod+l exec slock
+bindsym --release $mod+l exec betterlockscreen -l
 
 # Set up screenshots and partial screenshots
 bindsym --release Print exec gnome-screenshot -f ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
@@ -141,7 +141,8 @@ bindsym $mod+Shift+semicolon exec $controller skip -10
 bindsym $mod+Shift+apostrophe exec $controller skip 10
 bindsym $mod+Shift+comma exec $controller skipper -5
 bindsym $mod+Shift+period exec $controller skipper 5
-bindsym $mod+Shift+m exec $controller restart >> ~/Desktop/log
+bindsym $mod+Shift+m exec $controller start
+bindsym $mod+Shift+l exec $controller stop
 
 # Always float certain windows
 # for_window [class="mpv"] floating enable
