@@ -160,7 +160,6 @@ exec_always ~/Scripts/Xdbus.sh
 
 # Start notification daemon
 exec_always --no-startup-id dunst
-bindsym $mod+p exec pkill dunst
 
 # Startup various daemons
 exec_always --no-startup-id /usr/libexec/gsd-xsettings
