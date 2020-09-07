@@ -55,7 +55,10 @@ elif [ "$cmd" = "stop" ]; then
     sendCmd "stop" 
 elif [ "$cmd" = "start" ]; then
     sendCmd "stop"
-    mu
+    mu > /dev/null 2>&1 &
+    sleep 0.5
+    notifyText="Playing $(getTitle)"
+elif [ "$cmd" = "info" ]; then
     notifyText="Playing $(getTitle)"
 fi
 
