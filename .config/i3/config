@@ -143,6 +143,7 @@ bindsym $mod+Shift+comma exec $controller skipper -5
 bindsym $mod+Shift+period exec $controller skipper 5
 bindsym $mod+Shift+m exec $controller start
 bindsym $mod+Shift+l exec $controller stop
+bindsym $mod+Shift+o exec $controller info
 
 # Always float certain windows
 # for_window [class="mpv"] floating enable
