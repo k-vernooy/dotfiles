@@ -31,7 +31,6 @@ alias bp="vim ~/.bash_profile && source ~/.bash_profile"
 alias p="cd ~/Desktop/dev/projects"
 alias o="cd ~/Desktop/other"
 
-alias c="cd"
 alias l='ls'
 alias ll='ls -alF'
 alias la='ls -A'
