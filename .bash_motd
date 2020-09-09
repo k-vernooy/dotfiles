@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# fet.sh
-# cat ~/Desktop/other/projects/ascii-trek/quotes/rules-of-acquisition.txt | shuf | head -n 1
-# cat ~/Desktop/other/projects/ascii-trek/ships/$(ls ~/Desktop/other/projects/ascii-trek/ships/ | shuf | head -n 1)
-
-#diskUsage=$(df -h / | tail -n 1 | tr ' ' '\n' | grep . | sed '5q;d')
-#echo "Disk $diskUsage full..."

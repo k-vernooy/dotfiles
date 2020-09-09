@@ -8,9 +8,9 @@ for_window [class=".*"] border pixel 0
 smart_borders on
 
 # Change gap size
-gaps outer 0
-gaps inner 20
-# smart_gaps on
+gaps outer 10
+gaps inner 24
+smart_gaps on
 
 # Drag floating windows
 floating_modifier $mod
@@ -28,10 +28,10 @@ bindsym $mod+b exec firefox
 bindsym $mod+q kill
 
 # Bind to rofi wmenu
-bindsym $mod+Shift+w exec rofi -show
+bindsym $mod+Shift+w exec rofi -show -theme clean -icon-theme candy-icons
 
 # Start rofi drun menu
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+space exec rofi -show drun -theme clean -icon-theme candy-icons
 
 # Bind to suckless lockscreen
 bindsym --release $mod+l exec betterlockscreen -l
@@ -79,7 +79,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent # (opt. child)
@@ -146,7 +146,7 @@ bindsym $mod+Shift+l exec $controller stop
 bindsym $mod+Shift+o exec $controller info
 
 # Always float certain windows
-# for_window [class="mpv"] floating enable
+for_window [class="mpv"] floating enable
 
 # Make sure fonts are loaded right
 exec_always xset +fp /home/kai/.fonts/
@@ -163,5 +163,5 @@ exec_always --no-startup-id dunst
 
 # Startup various daemons
 exec_always --no-startup-id /usr/libexec/gsd-xsettings
-exec_always --no-startup-id pkill picom; picom
+exec_always --no-startup-id pkill picom; picom --no-use-damage
 exec_always --no-startup-id pkill polybar; polybar -r main

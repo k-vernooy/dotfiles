@@ -1,11 +1,16 @@
 [colors]
-background = #aa0c131f
-background-alt = #ee0c131f
+background = #880c131f
+background-alt = #ff0c131f
 foreground = #eeeeee
 foreground-alt = #eee
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+primary = #85c174
+secondary = #5ad2e3
+tertiary = #d07ef2
+fourth = #f57e47
+
+; #f3746f
+
+alert = #ed404c
 
 [bar/main]
 width = 100%
@@ -127,6 +132,7 @@ card = radeon_bl0
 
 format = <label>
 label =  %percentage%%
+label-foreground = ${colors.tertiary}
 
 bar-width = 10
 bar-indicator = |
@@ -166,11 +172,12 @@ interval = 3.0
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
 label-connected =  %essid%
+label-connected-foreground = ${colors.primary}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.alert}
 
 ; a = worst
 ramp-signal-0 = a
@@ -183,11 +190,11 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time = %l:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
@@ -201,7 +208,9 @@ label = %date% %time%
 type = internal/pulseaudio
 format-volume = <ramp-volume> <label-volume>
 
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.secondary}
+ramp-volume-foreground = ${colors.secondary}
+
 label-muted =  0%
 label-volume = %percentage%%
 
@@ -228,8 +237,11 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.fourth}
 
+label-discharging = "%percentage%%"
+label-discharging-foreground = ${colors.fourth}
+label-charging-foreground = ${colors.fourth}
 
 [module/powermenu]
 type = custom/menu
@@ -237,7 +249,7 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.alert}
 label-close = x
 label-close-foreground = ${colors.secondary}
 label-separator = |

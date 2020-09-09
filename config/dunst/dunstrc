@@ -108,7 +108,7 @@
     max_icon_size = 40
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Adwaita/16x16/legacy/:/home/kai/.icons/candy-icons/apps/scalable:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/Adwaita/256x256/legacy/:/home/kai/.icons/candy-icons/apps/scalable:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 
     # --- History --- #
@@ -182,12 +182,12 @@
 # --- Colors --- #
 
 [urgency_low]
-    background = "#0c131f77"
+    background = "#0c131faa"
     foreground = "#ffffffff"
     timeout = 10
 
 [urgency_normal]
-    background = "#0c131faa"
+    background = "#0c131fbb"
     foreground = "#ffffffff"
     timeout = 10
 
@@ -226,23 +226,3 @@
 # The script will be called as follows:
 #   script appname summary body icon urgency
 # where urgency can be "LOW", "NORMAL" or "CRITICAL".
-
-
-#[transient_disable]
-#    match_transient = yes
-#    set_transient = no
-
-#[transient_history_ignore]
-#    match_transient = yes
-#    history_ignore = yes
-
-#[fullscreen_delay_everything]
-#    fullscreen = delay
-
-#[fullscreen_show_critical]
-#    msg_urgency = critical
-#    fullscreen = show
-
-#[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"

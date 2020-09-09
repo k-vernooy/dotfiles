@@ -1,0 +1,69 @@
+! basic configuration
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+URxvt.internalBorder: 0
+URxvt.urlLauncher: firefox
+
+! font options
+URxvt.font:       xft:Fira Code: size=10: antialiasing=true
+Xft*dpi:          96
+Xft*antialias:    true
+Xft*hinting:      full
+
+
+! Set terminal color scheme
+! TODO: SET DIFFERENT BRIGHT/DARK VARIANTS
+
+! special
+*.foreground: #eeeeee
+*.cursorColor: #eeeeee
+
+! black
+*.color0: #263640
+*.color8: #4a697d
+
+! red
+*.color1: #ed404c
+*.color9: #ed404c
+
+! green
+*.color2: #36c265
+*.color10: #36c265
+
+! yellow
+*.color3: #d9f753
+*.color11: #d9f753
+
+! blue
+*.color4: #2d9cc4
+*.color12: #2d9cc4
+
+! magenta
+*.color5: #d07ef2
+*.color13: #d07ef2
+
+! cyan
+*.color6: #4be5eb
+*.color14: #4be5eb
+
+! white
+*.color7: #ebf0ee
+*.color15: #ebf0ee
+
+! Enable normal copy/paste
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+URxvt.keysym.C-M-c:    builtin-string:
+URxvt.keysym.C-M-v:    builtin-string:
+
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+urxvt*depth:32
+
+! urxvt*background:rgba:0c00/1300/1f00/dddd
+! urxvt*background: #0c131f
+! urxvt*background:rgba:0170/05e0/1100/bbbb
+! urxvt*background: #011b1e
+urxvt*background:rgba:0250/1100/1b00/dddd
