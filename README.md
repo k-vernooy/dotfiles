@@ -1,2 +1,5 @@
 # dotfiles
-Dotfiles for my 'buntu/i3 setup
+
+My dotfile organization repository.
+
+![image](img.png)
