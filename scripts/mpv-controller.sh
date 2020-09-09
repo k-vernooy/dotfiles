@@ -30,11 +30,11 @@ getTitle() {
         echo "waiting" > /dev/null
     done
     
-    title=$(getProp 'media-title');
+    title=$(getProp 'media-title' | tr -d '"');
     if [ "${#title}" -gt 35 ]; then
         title="$(echo "$title" | cut -c 1-35)..."
     fi
-    echo "$title\""
+    echo "$title"
 }
 
 
@@ -45,21 +45,19 @@ elif [ "$cmd" = "skipper" ]; then
     sendCmd "seek $2 relative-percent"
 elif [ "$cmd" = "prev" ]; then
     sendCmd "playlist-prev"
-    notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "next" ]; then
     sendCmd "playlist-next"
-    notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "pause" ]; then
     sendCmd "cycle pause"
 elif [ "$cmd" = "stop" ]; then
     sendCmd "stop" 
+    notifyText="Music process killed"
 elif [ "$cmd" = "start" ]; then
     sendCmd "stop"
     mu > /dev/null 2>&1 &
     sleep 0.5
-    notifyText="Playing $(getTitle)"
 elif [ "$cmd" = "info" ]; then
-    notifyText="Playing $(getTitle)"
+    notifyText="$(getTitle)"
 fi
 
 
