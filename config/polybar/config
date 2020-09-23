@@ -1,20 +1,23 @@
 [colors]
-background = #880c131f
-background-alt = #ff0c131f
+background = #ee151826
 foreground = #eeeeee
 foreground-alt = #eee
 primary = #85c174
 secondary = #5ad2e3
 tertiary = #d07ef2
 fourth = #f57e47
-
-; #f3746f
-
 alert = #ed404c
 
+
 [bar/main]
-width = 100%
-height = 24
+width = 100%:-48
+offset-x = 24
+offset-y = 24
+
+override-redirect = true
+wm-restack = i3
+
+height = 36
 radius = 0.0
 fixed-center = false
 
@@ -24,56 +27,49 @@ foreground = ${colors.foreground}
 padding-left = 1
 padding-right = 2
 
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 1
 
-font-0 = Noto Mono:pixelsize=10:antialias=true;2
-font-1 = FontAwesome:style=Regular:pixelsize=10:antialias=true;2
-font-2 = FontAwesome:style=Regular:pixelsize=10:antialias=true;2
+font-0 = Hack Nerd Font:pixelsize=11:antialias=true;2.5
+font-1 = Hack Nerd Font:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
-modules-right = xbacklight audio wlan battery date powermenu
 modules-center = xwindow
+modules-right = backlight audio wlan battery date powermenu
 
-tray-position = left
-tray-padding = 0
+tray-position = none
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+
+[bar/bump]
+background = none
+width = 1%
+modules-left = audio
+height = 56
+
+override-direct = true
+wm-restack = i3
+
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:20:...%
 
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-
 [module/filesystem]
 type = internal/fs
 interval = 25111
 mount-0 = /
-
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
+
 [module/i3]
 type = internal/i3
-pin-workspaces = true
+pin-workspaces = false
 strip-wsnumbers = true
 index-sort = true
 enable-click = true
@@ -82,17 +78,17 @@ wrapping-scroll = false
 reverse-scroll = false
 fuzzy-match = true
 
-ws-icon-default = 
-ws-icon-0 = "1;"
-ws-icon-1 = "2;"
-ws-icon-2 = "3;"
-ws-icon-3 = "4;4"
-ws-icon-4 = "5;5"
-ws-icon-5 = "6;6"
-ws-icon-6 = "7;7"
-ws-icon-7 = "8;"
-ws-icon-8 = "9;"
-ws-icon-9 = "0;0"
+ws-icon-default = "  "
+ws-icon-0 = "0;0  "
+ws-icon-1 = "1;%{T2}%{T-}  "
+ws-icon-2 = "2;%{T2}%{T-}  "
+ws-icon-3 = "3;  "
+ws-icon-4 = "4;4  "
+ws-icon-5 = "5;5  "
+ws-icon-6 = "6;6  "
+ws-icon-7 = "7;7  "
+ws-icon-8 = "8;  "
+ws-icon-9 = "9;  "
 
 ; 1 = dev
 ; 2 = terminals
@@ -101,37 +97,35 @@ ws-icon-9 = "0;0"
 ; 8 = notes
 ; 9 = music
 
-format = <label-state> <label-mode>
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+format = <label-state>
 
 label-focused = %icon%
-label-focused-foreground = #ffffff
-label-focused-background = ${colors.background-alt}
+label-focused-foreground = #02c084
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
-label-unfocused = %icon%
-label-unfocused-padding = 2
+label-unfocused = ${self.label-focused}
+label-unfocused-foreground = #0a7383
+label-unfocused-padding = ${self.label-focused-padding}
 
-label-visible = %index%
+label-visible = ${self.label-focused}
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent = ${self.label-focused}
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = ${self.label-focused-padding}
 
 
-[module/xbacklight]
+[module/backlight]
 type = internal/backlight
 card = radeon_bl0
 
 format = <label>
-label =  %percentage%%
+
+label = "  %percentage%%"
 label-foreground = ${colors.tertiary}
 
 bar-width = 10
@@ -171,12 +165,13 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
-label-connected =  %essid%
+
+label-connected = "直  %essid%"
 label-connected-foreground = ${colors.primary}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
+label-disconnected = 睊 %ifname% disconnected
 label-disconnected-foreground = ${colors.alert}
 
 ; a = worst
@@ -192,16 +187,15 @@ ramp-signal-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 1
 date =
-date-alt = " %Y-%m-%d"
+;date-alt = " %Y-%m-%d"
 
-time = %l:%M
-time-alt = %H:%M:%S
+time = "%I:%M"
+time-alt = "%H:%M:%S"
 
-format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = %date% %time%
+label = %date%%time%
 
 
 [module/audio]
@@ -234,9 +228,16 @@ format-full-prefix = ""
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 ramp-capacity-foreground = ${colors.fourth}
 
 label-discharging = "%percentage%%"
@@ -279,5 +280,4 @@ screenchange-reload = true
 ;pseudo-transparency =true
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-bottom = 20
