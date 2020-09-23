@@ -5,7 +5,7 @@ URxvt.internalBorder: 0
 URxvt.urlLauncher: firefox
 
 ! font options
-URxvt.font:       xft:Fira Code: size=10: antialiasing=true
+URxvt.font:       xft:Hack: size=10: antialiasing=true
 Xft*dpi:          96
 Xft*antialias:    true
 Xft*hinting:      full
@@ -66,4 +66,6 @@ urxvt*depth:32
 ! urxvt*background: #0c131f
 ! urxvt*background:rgba:0170/05e0/1100/bbbb
 ! urxvt*background: #011b1e
-urxvt*background:rgba:0250/1100/1b00/dddd
+! urxvt*background:rgba:0250/1100/1b00/dddd
+
+urxvt*background:rgba:1500/1800/2600/fa00

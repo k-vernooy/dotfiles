@@ -1,6 +1,9 @@
 # Export fet.sh info
 export info='n user up cpu mem os wm sh term kern col n'
 
+# Use gtk theme
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
 # Get message in terminal
 . ~/.bash_motd
 

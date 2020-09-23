@@ -28,7 +28,8 @@ alias dt="cd ~/Desktop"
 alias e="exit"
 alias c="clear"
 alias bp="vim ~/.bash_profile && source ~/.bash_profile"
-alias p="cd ~/Desktop/dev/projects"
+alias d="cd ~/Desktop/dev"
+alias p="d && cd projects"
 alias o="cd ~/Desktop/other"
 
 alias l='ls'
@@ -36,3 +37,5 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias cp="cp -i"
 alias mv='mv -i'
+
+alias gc="git clone"

@@ -1,8 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# Make sure tap to click is set
-xinput set-prop 12 284 1 > /dev/null
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
