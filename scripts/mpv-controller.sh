@@ -56,6 +56,8 @@ elif [ "$cmd" = "start" ]; then
     sendCmd "stop"
     mu > /dev/null 2>&1 &
     sleep 0.5
+elif [ "$cmd" = "vol" ]; then
+    sendCmd "add volume $2"
 elif [ "$cmd" = "info" ]; then
     notifyText="$(getTitle)"
 fi

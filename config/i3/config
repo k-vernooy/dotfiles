@@ -1,16 +1,12 @@
-# set the mod variable to super key
+# Set mod variable to super key
 set $mod Mod4
 
 # Turn borders off
 for_window [class=".*"] border pixel 0
 
-# In case I ever enable borders
-smart_borders on
-
 # Change gap size
-gaps outer 10
-gaps inner 24
-smart_gaps on
+gaps outer 4
+gaps inner 20
 
 # Drag floating windows
 floating_modifier $mod
@@ -20,7 +16,7 @@ bindsym $mod+Return exec urxvt
 
 # vscode, files, browser, notes shortcuts
 bindsym $mod+c exec code
-bindsym $mod+n exec nautilus
+bindsym $mod+n exec thunar
 bindsym $mod+t exec typora
 bindsym $mod+b exec firefox
 
@@ -46,8 +42,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Bind brightness keys to baclight interface
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 5
 
 # Move focus with the arrow keys
 bindsym $mod+Left focus left
@@ -144,6 +140,8 @@ bindsym $mod+Shift+period exec $controller skipper 5
 bindsym $mod+Shift+m exec $controller start
 bindsym $mod+Shift+l exec $controller stop
 bindsym $mod+Shift+o exec $controller info
+bindsym $mod+Shift+minus exec $controller vol -10
+bindsym $mod+Shift+equal exec $controller vol 10
 
 # Always float certain windows
 for_window [class="mpv"] floating enable
@@ -161,7 +159,16 @@ exec_always ~/Scripts/Xdbus.sh
 # Start notification daemon
 exec_always --no-startup-id dunst
 
-# Startup various daemons
-exec_always --no-startup-id /usr/libexec/gsd-xsettings
+# Enable tap to click - will need to change input
+# device id and property number. See [link] for more
+exec_always xinput set-prop 12 284 1 > /dev/null 2>&1
+
+# Startup daemons for compositor and status bar
 exec_always --no-startup-id pkill picom; picom --no-use-damage
-exec_always --no-startup-id pkill polybar; polybar -r main
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Increase screen contrast (disable for better displays)
+exec_always --no-startup-id xrandr --output eDP --gamma 0.8:0.8:0.8
+
+# Use URxvt settings from Xresources
+exec_always --no-startup-id xrdb ~/.Xresources
