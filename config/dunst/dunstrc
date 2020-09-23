@@ -10,7 +10,7 @@
 
     # The geometry of the window
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "300x6-10+34"
+    geometry = "300x6-24+68"
 
     # Show how many messages are hidden
     indicate_hidden = yes
@@ -182,12 +182,12 @@
 # --- Colors --- #
 
 [urgency_low]
-    background = "#0c131faa"
+    background = "#151826fa"
     foreground = "#ffffffff"
     timeout = 10
 
 [urgency_normal]
-    background = "#0c131fbb"
+    background = "#151826fa"
     foreground = "#ffffffff"
     timeout = 10
 
