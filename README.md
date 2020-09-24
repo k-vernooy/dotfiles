@@ -2,4 +2,5 @@
 
 My dotfile organization repository.
 
-![images/image](img.png)
+![images/image2](images/img2.png)
+![images/image](images/img.png)
