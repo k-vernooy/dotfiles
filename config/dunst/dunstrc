@@ -10,7 +10,7 @@
 
     # The geometry of the window
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "300x6-24+68"
+    geometry = "300x6-24-78"
 
     # Show how many messages are hidden
     indicate_hidden = yes
@@ -108,7 +108,7 @@
     max_icon_size = 40
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Adwaita/256x256/legacy/:/home/kai/.icons/candy-icons/apps/scalable:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/Papirus/64x64/apps:/usr/share/icons/Adwaita/256x256/legacy/:/home/kai/.icons/candy-icons/apps/scalable:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 
     # --- History --- #
@@ -182,12 +182,12 @@
 # --- Colors --- #
 
 [urgency_low]
-    background = "#151826fa"
+    background = "#151826ee"
     foreground = "#ffffffff"
     timeout = 10
 
 [urgency_normal]
-    background = "#151826fa"
+    background = "#151826ee"
     foreground = "#ffffffff"
     timeout = 10
 

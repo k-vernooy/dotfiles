@@ -33,8 +33,8 @@ bindsym $mod+space exec rofi -show drun -theme clean -icon-theme candy-icons
 bindsym --release $mod+l exec betterlockscreen -l
 
 # Set up screenshots and partial screenshots
-bindsym --release Print exec gnome-screenshot -f ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release Shift+Print exec gnome-screenshot -a -f ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Print exec maim ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Shift+Print exec maim -s ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Bind audio keys to pactl volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%

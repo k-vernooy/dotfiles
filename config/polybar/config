@@ -14,6 +14,8 @@ width = 100%:-48
 offset-x = 24
 offset-y = 24
 
+bottom = true
+
 override-redirect = true
 wm-restack = i3
 
@@ -49,6 +51,7 @@ width = 1%
 modules-left = audio
 height = 56
 
+bottom = true
 override-direct = true
 wm-restack = i3
 
