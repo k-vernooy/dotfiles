@@ -1,5 +1,6 @@
 [colors]
-background = #ee151826
+background = #fa1e2137 
+;#ee151826
 foreground = #eeeeee
 foreground-alt = #eee
 primary = #85c174
@@ -14,7 +15,7 @@ width = 100%:-48
 offset-x = 24
 offset-y = 24
 
-bottom = true
+;bottom = true
 
 override-redirect = true
 wm-restack = i3
@@ -51,7 +52,7 @@ width = 1%
 modules-left = audio
 height = 56
 
-bottom = true
+;bottom = true
 override-direct = true
 wm-restack = i3
 
@@ -113,6 +114,7 @@ label-unfocused-foreground = #0a7383
 label-unfocused-padding = ${self.label-focused-padding}
 
 label-visible = ${self.label-focused}
+label-visible-foreground = #0a7383
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
