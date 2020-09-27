@@ -10,7 +10,7 @@
 
     # The geometry of the window
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "300x6-24-78"
+    geometry = "300x6-24+68"
 
     # Show how many messages are hidden
     indicate_hidden = yes
@@ -182,47 +182,17 @@
 # --- Colors --- #
 
 [urgency_low]
-    background = "#151826ee"
+    background = "#1e2137fa"
     foreground = "#ffffffff"
-    timeout = 10
+    timeout = 8
 
 [urgency_normal]
-    background = "#151826ee"
+    background = "#1e2137fa"
     foreground = "#ffffffff"
-    timeout = 10
+    timeout = 8
 
 [urgency_critical]
     background = "#cc130ddd"
     foreground = "#ffffff"
     timeout = 0
     icon = abrt
-
-
-# Messages can be matched by
-#    appname (discouraged, see desktop_entry)
-#    body
-#    category
-#    desktop_entry
-#    icon
-#    match_transient
-#    msg_urgency
-#    stack_tag
-#    summary
-#
-# and you can override the
-#    background
-#    foreground
-#    format
-#    frame_color
-#    fullscreen
-#    new_icon
-#    set_stack_tag
-#    set_transient
-#    timeout
-#    urgency
-#
-# You can specify a script that gets run when the rule matches by
-# setting the "script" option.
-# The script will be called as follows:
-#   script appname summary body icon urgency
-# where urgency can be "LOW", "NORMAL" or "CRITICAL".

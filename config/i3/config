@@ -11,7 +11,7 @@ gaps inner 20
 # Drag floating windows
 floating_modifier $mod
 
-# Start a URxvt terminal instance
+# Start a URxvt terminal emulator instance
 bindsym $mod+Return exec urxvt
 
 # vscode, files, browser, notes shortcuts
@@ -23,13 +23,10 @@ bindsym $mod+b exec firefox
 # Kill focused window
 bindsym $mod+q kill
 
-# Bind to rofi wmenu
-bindsym $mod+Shift+w exec rofi -show -theme clean -icon-theme candy-icons
-
 # Start rofi drun menu
-bindsym $mod+space exec rofi -show drun -theme clean -icon-theme candy-icons
+bindsym $mod+space exec rofi -show drun -theme clean -icon-theme Papirus
 
-# Bind to suckless lockscreen
+# Bind key to betterlockscreen (-git)
 bindsym --release $mod+l exec betterlockscreen -l
 
 # Set up screenshots and partial screenshots
@@ -41,9 +38,9 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
-# Bind brightness keys to baclight interface
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 5
+# Bind brightness keys to light interface
+bindsym XF86MonBrightnessUp exec sudo light -A 5
+bindsym XF86MonBrightnessDown exec sudo light -U 5
 
 # Move focus with the arrow keys
 bindsym $mod+Left focus left
@@ -57,16 +54,14 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split in horizontal orientation
+# Split in specified direction
 bindsym $mod+h split h
-
-# Split in vertical orientation
 bindsym $mod+v split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# Change container layout (stacked, tabbed, toggle split)
+# Change container layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -75,10 +70,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-
-# Focus the parent container
-bindsym $mod+a focus parent # (opt. child)
+bindsym $mod+Control+space focus mode_toggle
 
 # Bind keys to switch to next workspace
 bindsym $mod+bracketright workspace next
@@ -122,7 +114,6 @@ bindsym $mod+Control+Left resize shrink width 10 px or 10
 bindsym $mod+Control+Down resize grow height 10 px or 10
 bindsym $mod+Control+Up resize shrink height 10 px or 10
 bindsym $mod+Control+Right resize grow width 10 px or 10
-
 bindsym $mod+Shift+Control+Left resize shrink width 1 px or 1
 bindsym $mod+Shift+Control+Down resize grow height 1 px or 1
 bindsym $mod+Shift+Control+Up resize shrink height 1 px or 1
@@ -137,7 +128,7 @@ bindsym $mod+Shift+semicolon exec $controller skip -10
 bindsym $mod+Shift+apostrophe exec $controller skip 10
 bindsym $mod+Shift+comma exec $controller skipper -5
 bindsym $mod+Shift+period exec $controller skipper 5
-bindsym $mod+Shift+m exec $controller start
+bindsym $mod+Shift+m exec rofi -modi 'Music:~/Scripts/rofi-music.sh' -show Music -theme music
 bindsym $mod+Shift+l exec $controller stop
 bindsym $mod+Shift+o exec $controller info
 bindsym $mod+Shift+minus exec $controller vol -10
@@ -145,23 +136,24 @@ bindsym $mod+Shift+equal exec $controller vol 10
 
 # Always float certain windows
 for_window [class="mpv"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # Make sure fonts are loaded right
 exec_always xset +fp /home/kai/.fonts/
 exec_always xset fp rehash
 
-# Run startup wallpaper script
+# Run startup wallpaper
 exec_always bash -c "feh --bg-fill $(cat ~/Scripts/default-bg.txt | tr -d '\n')"
 
 # Allow scripts to interface with dbus
-exec_always ~/Scripts/Xdbus.sh
+exec_always --no-startup-id ~/Scripts/Xdbus.sh
 
 # Start notification daemon
 exec_always --no-startup-id dunst
 
 # Enable tap to click - will need to change input
 # device id and property number. See [link] for more
-exec_always xinput set-prop 12 284 1 > /dev/null 2>&1
+exec_always --no-startup-id xinput set-prop 12 284 1 > /dev/null 2>&1
 
 # Startup daemons for compositor and status bar
 exec_always --no-startup-id pkill picom; picom --no-use-damage
@@ -172,3 +164,5 @@ exec_always --no-startup-id xrandr --output eDP --gamma 0.8:0.8:0.8
 
 # Use URxvt settings from Xresources
 exec_always --no-startup-id xrdb ~/.Xresources
+
+exec --no-startup-id pulseaudio --start
