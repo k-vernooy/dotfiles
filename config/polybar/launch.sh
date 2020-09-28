@@ -2,5 +2,5 @@
 
 pkill polybar
 
-polybar -r bump &
 polybar -r main &
+polybar -r bump &

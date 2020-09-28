@@ -1,9 +1,8 @@
 [colors]
-background = #fa1e2137 
-;#ee151826
+background = #ff1e2137 
 foreground = #eeeeee
 foreground-alt = #eee
-primary = #85c174
+primary = #02c084
 secondary = #5ad2e3
 tertiary = #d07ef2
 fourth = #f57e47
@@ -15,21 +14,17 @@ width = 100%:-48
 offset-x = 24
 offset-y = 24
 
-;bottom = true
+height = 36
+radius = 0.0
 
 override-redirect = true
 wm-restack = i3
-
-height = 36
-radius = 0.0
-fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 padding-left = 1
 padding-right = 2
-
 module-margin-left = 2
 module-margin-right = 1
 
@@ -38,9 +33,7 @@ font-1 = Hack Nerd Font:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = backlight audio wlan battery date powermenu
-
-tray-position = none
+modules-right = audio wlan battery date powermenu
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -51,15 +44,11 @@ background = none
 width = 1%
 modules-left = audio
 height = 56
-
-;bottom = true
-override-direct = true
 wm-restack = i3
-
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:20:...%
+label = %title:0:25:...%
 
 
 [module/filesystem]
@@ -94,19 +83,10 @@ ws-icon-7 = "7;7  "
 ws-icon-8 = "8;  "
 ws-icon-9 = "9;  "
 
-; 1 = dev
-; 2 = terminals
-; 3 = browser
-; 7 = nautilus
-; 8 = notes
-; 9 = music
-
 format = <label-state>
 
 label-focused = %icon%
-label-focused-foreground = #02c084
-label-focused-background = ${colors.background}
-label-focused-underline= ${colors.primary}
+label-focused-foreground = ${colors.primary}
 label-focused-padding = 1
 
 label-unfocused = ${self.label-focused}
@@ -115,8 +95,6 @@ label-unfocused-padding = ${self.label-focused-padding}
 
 label-visible = ${self.label-focused}
 label-visible-foreground = #0a7383
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 label-urgent = ${self.label-focused}
@@ -129,38 +107,8 @@ type = internal/backlight
 card = radeon_bl0
 
 format = <label>
-
 label = "  %percentage%%"
 label-foreground = ${colors.tertiary}
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 0
-bar-fill = ─
-bar-fill-font = 0
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 0
-bar-empty-foreground = ${colors.foreground-alt}
-
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
-
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
 
 
 [module/wlan]
@@ -170,8 +118,7 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
-
-label-connected = "直  %essid%"
+label-connected = "直"
 label-connected-foreground = ${colors.primary}
 
 format-disconnected = <label-disconnected>
@@ -185,37 +132,36 @@ ramp-signal-1 = b
 ramp-signal-2 = c
 ramp-signal-3 = d
 ramp-signal-4 = e
-ramp-signal-foreground = ${colors.foreground-alt}
 
 
 [module/date]
 type = internal/date
 interval = 1
-date =
-;date-alt = " %Y-%m-%d"
 
+date =
+date-alt = "%b %d, %Y  "
 time = "%I:%M"
 time-alt = "%H:%M:%S"
 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
-
 label = %date%%time%
 
 
 [module/audio]
 type = internal/pulseaudio
-format-volume = <ramp-volume> <label-volume>
 
+format-volume = <ramp-volume>
 label-volume-foreground = ${colors.secondary}
 ramp-volume-foreground = ${colors.secondary}
-
-label-muted =  0%
-label-volume = %percentage%%
+label-volume = 
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
+
+label-muted = ﱝ
+label-muted-foreground = ${colors.secondary}
 
 
 [module/battery]
@@ -224,20 +170,17 @@ battery = BAT1
 adapter = ADP1
 full-at = 98
 
-format-charging = <ramp-capacity> <label-charging>
-format-charging-underline = #ffb52a
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-charging = <ramp-capacity>
+format-discharging = <ramp-capacity>
 
-format-full-prefix = ""
+format-full-prefix = ""
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-4 = 
 ramp-capacity-5 = 
 ramp-capacity-6 = 
 ramp-capacity-7 = 
@@ -245,36 +188,17 @@ ramp-capacity-8 = 
 ramp-capacity-9 = 
 ramp-capacity-foreground = ${colors.fourth}
 
-label-discharging = "%percentage%%"
+label-discharging =
 label-discharging-foreground = ${colors.fourth}
 label-charging-foreground = ${colors.fourth}
 
 [module/powermenu]
-type = custom/menu
-expand-right = true
+type = custom/text
 format-spacing = 1
+content = 
+content-foreground = ${colors.alert}
+click-left = bash ~/Scripts/rofi/launch.sh powermenu
 
-label-open = 
-label-open-foreground = ${colors.alert}
-label-close = x
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
