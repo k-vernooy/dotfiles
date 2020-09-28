@@ -12,7 +12,7 @@ notifyText=""
 # Note: sources bash profile because this program
 #       relies on the 'mu' function, which plays
 #       my music directory on shuffle.
-. ~/.bash_profile
+. ~/.bash_profile > /dev/null 2>&1
 
 
 # Add mpv socket command sender - takes property string
@@ -50,11 +50,15 @@ elif [ "$cmd" = "next" ]; then
 elif [ "$cmd" = "pause" ]; then
     sendCmd "cycle pause"
 elif [ "$cmd" = "stop" ]; then
-    sendCmd "stop" 
+    pkill -f "mpv --input-ipc-server"
     notifyText="Music process killed"
 elif [ "$cmd" = "start" ]; then
-    sendCmd "stop"
-    mu > /dev/null 2>&1 &
+    pkill -f "mpv --input-ipc-server"
+    if [ "$2" = "shuffle" ]; then
+        mu > /dev/null 2>&1 &
+    else
+        mpv --input-ipc-server="${socket}" -- "${2}"  > /dev/null 2>&1 &
+    fi
     sleep 0.5
 elif [ "$cmd" = "vol" ]; then
     sendCmd "add volume $2"
