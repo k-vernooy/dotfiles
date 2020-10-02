@@ -2,11 +2,12 @@
 set $mod Mod4
 
 # Turn borders off
-for_window [class=".*"] border pixel 0
+for_window [class="^.*"] border pixel 0
 
 # Change gap size
 gaps outer 4
 gaps inner 20
+gaps top 62
 
 # Drag floating windows
 floating_modifier $mod
@@ -24,10 +25,10 @@ bindsym $mod+b exec firefox
 bindsym $mod+q kill
 
 # Start rofi drun menu
-bindsym $mod+space exec rofi -show drun -theme clean -icon-theme Papirus
+bindsym $mod+space exec ~/Scripts/rofi/launch.sh drun 
 
 # Bind key to betterlockscreen (-git)
-bindsym --release $mod+l exec betterlockscreen -l
+bindsym --release $mod+l exec betterlockscreen -l blur
 
 # Set up screenshots and partial screenshots
 bindsym --release Print exec maim ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
@@ -107,7 +108,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Exit i3
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec ~/Scripts/rofi/launch.sh powermenu
 
 # Add resize keybindings in place of mode
 bindsym $mod+Control+Left resize shrink width 10 px or 10
@@ -128,7 +129,7 @@ bindsym $mod+Shift+semicolon exec $controller skip -10
 bindsym $mod+Shift+apostrophe exec $controller skip 10
 bindsym $mod+Shift+comma exec $controller skipper -5
 bindsym $mod+Shift+period exec $controller skipper 5
-bindsym $mod+Shift+m exec rofi -modi 'Music:~/Scripts/rofi-music.sh' -show Music -theme music
+bindsym $mod+Shift+m exec ~/Scripts/rofi/launch.sh music
 bindsym $mod+Shift+l exec $controller stop
 bindsym $mod+Shift+o exec $controller info
 bindsym $mod+Shift+minus exec $controller vol -10

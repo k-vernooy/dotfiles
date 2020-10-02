@@ -10,7 +10,7 @@ function do_notify(a)
    if string.len(a) > 45 then
        a = string.sub(a, 0, 45).."..."
    end
-   local command = ("notify-send -a Music -u low -i deepin-music -- %s"):format(a:shellescape()) 
+   local command = ("notify-send -a Music -u low -i gnome-music -- %s"):format(a:shellescape()) 
    if command ~= lastcommand then
       os.execute(command)
       lastcommand = command

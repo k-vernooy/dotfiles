@@ -10,7 +10,7 @@
 
     # The geometry of the window
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "300x6-24+68"
+    geometry = "270x6-24+68"
 
     # Show how many messages are hidden
     indicate_hidden = yes
@@ -29,8 +29,8 @@
     separator_color = "#ffffffaa"
 
     # Set notification padding
-    padding = 11
-    horizontal_padding = 11
+    padding = 16
+    horizontal_padding = 16
 
     # Disable frame (border)
     frame_width = 0
@@ -45,7 +45,8 @@
     # --- Text --- #
 
     # Set the font
-    font = "Nunito Sans 11"
+    # font = "Noto Sans 11"
+    font = "Hack 9.5"
 
     # Set line height to font height
     line_height = 0
@@ -108,7 +109,7 @@
     max_icon_size = 40
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Papirus/64x64/apps:/usr/share/icons/Adwaita/256x256/legacy/:/home/kai/.icons/candy-icons/apps/scalable:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /home/kai/.icons/Reversal-blue/apps/scalable:/usr/share/icons/Adwaita/256x256/legacy/
 
 
     # --- History --- #
@@ -143,7 +144,7 @@
     verbosity = mesg
 
     # Define the corner radius of the notification window
-    corner_radius = 7
+    corner_radius = 0
 
     # Don't gnore the dbus closeNotification message.
     ignore_dbusclose = false
@@ -192,7 +193,7 @@
     timeout = 8
 
 [urgency_critical]
-    background = "#cc130ddd"
+    background = "#dd130ddd"
     foreground = "#ffffff"
     timeout = 0
     icon = abrt
