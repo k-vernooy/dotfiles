@@ -1,11 +1,10 @@
 [colors]
-background = #ff1e2137 
-foreground = #eeeeee
-foreground-alt = #eee
+background = #fa1e2137 
+foreground = #e3eaf3
 primary = #02c084
-secondary = #5ad2e3
+secondary = #65a2d9
 tertiary = #d07ef2
-fourth = #f57e47
+fourth = #e5c246
 alert = #ed404c
 
 
@@ -39,13 +38,6 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 
-[bar/bump]
-background = none
-width = 1%
-modules-left = audio
-height = 56
-wm-restack = i3
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:25:...%
@@ -57,7 +49,7 @@ interval = 25111
 mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground}
 
 
 [module/i3]
@@ -86,7 +78,7 @@ ws-icon-9 = "9;  "
 format = <label-state>
 
 label-focused = %icon%
-label-focused-foreground = ${colors.primary}
+label-focused-foreground = ${colors.fourth}
 label-focused-padding = 1
 
 label-unfocused = ${self.label-focused}
@@ -123,7 +115,7 @@ label-connected-foreground = ${colors.primary}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = 睊 %ifname% disconnected
+label-disconnected = 睊
 label-disconnected-foreground = ${colors.alert}
 
 ; a = worst
@@ -143,7 +135,7 @@ date-alt = "%b %d, %Y  "
 time = "%I:%M"
 time-alt = "%H:%M:%S"
 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 format-underline = #0a6cf5
 label = %date%%time%
 
@@ -173,8 +165,8 @@ full-at = 98
 format-charging = <ramp-capacity>
 format-discharging = <ramp-capacity>
 
-format-full-prefix = ""
-format-full-prefix-foreground = ${colors.foreground-alt}
+label-full =  
+label-full-foreground = ${colors.fourth}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
