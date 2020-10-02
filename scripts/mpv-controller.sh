@@ -68,5 +68,5 @@ fi
 
 
 if [ "$notifyText" != "" ]; then
-    notify-send "$notifyText" -a "Music" -u low -i deepin-music
+    notify-send "$notifyText" -a "Music" -u low -i gnome-music
 fi
