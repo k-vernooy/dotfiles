@@ -1,21 +1,22 @@
 # Export fet.sh info
-export info='n user up cpu mem os wm sh term kern col n'
-
-# Use gtk theme
+export info='n user up mem os wm sh term kern col n'
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-# Get message in terminal
-. ~/.bash_motd
 
 # Set env vars
-export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:/sbin
 export EDITOR="vim"
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 
+
+. ~/.bash_motd
+
+
 md() {
     . ~/Venv/bin/activate
     youtube-dl -o "~/Music/%(title)s|%(id)s.%(ext)s" -x -- "$1"
+    # TODO: DOWNLOAD THUMBNAIL HERE
     deactivate
 }
 
@@ -39,5 +40,5 @@ bashstat() {
 }
 
 mu() {
-    mpv ~/Music/* --shuffle --input-ipc-server=/tmp/mpv-socket
+    mpv --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/Music/*  
 }
