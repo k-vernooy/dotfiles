@@ -1,8 +1,8 @@
 :root {
     --accent: white;
-    --main-bg: #1e232f;
-    --dark-bg: #070b12;
-    --light-bg: #262d3d;
+    --main-bg: #21243a;
+    --dark-bg: #141729;
+    --light-bg: #21243a;
 }
 
 
@@ -13,11 +13,11 @@
 
 
 #nav-bar-customization-target {
-    background-color: var(--main-bg) !important;
-    -moz-appearance: none !important;
-    background-image: none !important;
-    border: none !important;
-    color: white !important;
+  background-color: var(--main-bg) !important;
+  -moz-appearance: none !important;
+  background-image: none !important;
+  border: none !important;
+  color: white !important;
 }
 
 
@@ -28,11 +28,11 @@
 #main-window,
 #tabbrowser-tabs,
 #TabsToolBar {
-    background-color: var(--dark-bg) !important;
-    -moz-appearance: none !important;
-    background-image: none !important;
-    border: none !important;
-    color: white !important;
+  background-color: var(--dark-bg) !important;
+  -moz-appearance: none !important;
+  background-image: none !important;
+  border: none !important;
+  color: white !important;
 }
 
 #tabbrowser-tabs {
@@ -43,6 +43,7 @@
     color: rgb(255, 255, 255) !important;
 }
 
+
 #TabsToolbar .tabbrowser-tab {
     color: rgb(220, 220, 220) !important;
 }
@@ -52,7 +53,7 @@
 }
 
 .tab-background[selected="true"] {
-    background-color: var(--main-bg) !important;
+    background-color: var(--light-bg) !important;
     -moz-appearance: none !important;
     background-image: none !important;
     border: none !important;
@@ -74,27 +75,27 @@
 
 .tabbrowser-tab::before, 
 .tabbrowser-tab::after{
-    display: none !important;
+  display: none !important;
 }
 
 
 .tab-close-button {
-    border-radius: 10px !important;
+  border-radius: 10px !important;
 }
 
 
 #identity-box,
 #tracking-protection-icon-container,
 #urlbar-background {
-    display: none !important;
+   display: none !important;
 }
 
 
 #back-button>.toolbarbutton-icon {
-    transform: scale(.85, .85) !important;
-    animation: none !important;
-    border: none !important;
-    box-shadow: none !important;
+  transform: scale(.85, .85) !important;
+  animation: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 
@@ -106,17 +107,17 @@
 
 #back-button:hover,
 #back-button:hover > .toolbarbutton-icon {
-    border-radius: 4px !important;
+  border-radius: 2px !important;
 }
 
 
 #back-button {
-    list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiAxMSNzVLQoGBAAAAb0lEQVQoz43ROQqDUBSF4UMEESKCBBehOODK7ezSWZnGJmuI4xp+66CX9077FXc40k1o+fCSFRoOOgKLa3Z6QosrNt5EFpesDDwtLlgYSSzOmZlILY758SW7ykO+cYzwWNLjTI9HSc5XS86ypP+6Tw/fVEqhFbEZAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAzLTE5VDE4OjU1OjUzKzAxOjAwq3ccegAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMy0xOVQxODo1NTo1MyswMTowMNoqpMYAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC') !important;
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiAxMSNzVLQoGBAAAAb0lEQVQoz43ROQqDUBSF4UMEESKCBBehOODK7ezSWZnGJmuI4xp+66CX9077FXc40k1o+fCSFRoOOgKLa3Z6QosrNt5EFpesDDwtLlgYSSzOmZlILY758SW7ykO+cYzwWNLjTI9HSc5XS86ypP+6Tw/fVEqhFbEZAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAzLTE5VDE4OjU1OjUzKzAxOjAwq3ccegAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMy0xOVQxODo1NTo1MyswMTowMNoqpMYAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC') !important;
 }
 
 
 #forward-button {
-    list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiAxMSOA3k2CXQAAAAbklEQVQoz5WRMQqDABAEF4UgKEIIPkKJii+3s7NLpY1N3qBR84axsPYOt1sYuNtdSZLEi5FG1yKk5U9tIQ86dioLiejZKC0k5sPK20JSBn4UFvJkYiG3kIwvM8npAt2Vc8J50onpFOVU7Y51PfcBtUFUSir+geUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDMtMTlUMTg6NTY6MTMrMDE6MDDECqmDAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTAzLTE5VDE4OjU2OjEzKzAxOjAwtVcRPwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=') !important;
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiAxMSOA3k2CXQAAAAbklEQVQoz5WRMQqDABAEF4UgKEIIPkKJii+3s7NLpY1N3qBR84axsPYOt1sYuNtdSZLEi5FG1yKk5U9tIQ86dioLiejZKC0k5sPK20JSBn4UFvJkYiG3kIwvM8npAt2Vc8J50onpFOVU7Y51PfcBtUFUSir+geUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDMtMTlUMTg6NTY6MTMrMDE6MDDECqmDAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTAzLTE5VDE4OjU2OjEzKzAxOjAwtVcRPwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=') !important;
 }
 
 
@@ -126,40 +127,40 @@
 #pageActionSeparator,
 #pageActionButton,
 #reader-mode-button{
-    display: none !important;
+  display: none !important;
 }
 
 
 #PanelUI-button {
-    background-color: var(--main-bg) !important;
-    border-image-source: none !important;
-    border-inline-start: 0px !important;
-    margin-inline-start: 0px !important;
-    border-image-slice: 0 !important;
+  background-color: var(--main-bg) !important;
+  border-image-source: none !important;
+  border-inline-start: 0px !important;
+  margin-inline-start: 0px !important;
+  border-image-slice: 0 !important;
 }
 
 
 #urlbar-results {
-    background-color: var(--light-bg) !important;
-    border-radius: 10px !important;
+  background-color: var(--light-bg) !important;
+  border-radius: 10px !important;
 }
 
 
 .urlbarView-body-inner {
-    border-top: none !important;
+  border-top: none !important;
 }
 
 
 #nav-bar {
-    border-bottom: 0px !important;
-    box-shadow: none !important;
+  border-bottom: 0px !important;
+  box-shadow: none !important;
 }
 
 
 #urlbar ::-moz-selection,
 .searchbar-textbox ::-moz-selection {
-    background-color: #dddddd !important;
-    color: #000 !important;
+  background-color: #dddddd !important;
+  color: #000 !important;
 }
 
 
@@ -169,5 +170,9 @@
 
 
 #tabbrowser-tabpanels{
-    background-color: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+.tab-loading-burst {
+    display: none !important;
 }
