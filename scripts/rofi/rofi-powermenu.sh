@@ -9,11 +9,11 @@ if [ -z "$@" ]; then
 else
     if [ "$1" = "Shutdown" ]; then
         echo -en "Now\n30s\n1m"
-    elif [ "$1" = "Exit" ]; then
+    elif [ "$1" = "Logout" ]; then
         i3-msg exit
     elif [ "$1" = "Reboot" ]; then
         sudo reboot
     elif [ "$1" = "Suspend" ]; then
-        system-ctl suspend
+        systemctl suspend
     fi
 fi

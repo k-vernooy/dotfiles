@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cat ~/Desktop/other/projects/ascii-trek/quotes/rules-of-acquisition.txt | shuf | head -n 1

@@ -1,12 +1,14 @@
 #================================
 # Utilities/Misc useful aliases
 #================================
+alias ls="lsd"
 
 alias open="xdg-open"
 alias audio-reset="pulseaudio -k"
 alias copy='xclip -sel clip'
 alias ffchrome='cd /home/kai/.mozilla/firefox/gjd69y6g.default-release/chrome'
 
+alias vim="nvim"
 alias v="vim"
 alias s="sudo"
 alias ydl="youtube-dl"
@@ -39,3 +41,4 @@ alias cp="cp -i"
 alias mv='mv -i'
 
 alias gc="git clone"
+alias wttr="curl -s wttr.in | head -n 7 | tail -n 6; printf '\n'"

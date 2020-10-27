@@ -5,7 +5,7 @@ URxvt.internalBorder: 14
 URxvt.urlLauncher: firefox
 
 ! font options
-URxvt.font:       xft:Hack: size=10: antialiasing=true
+URxvt.font:       xft:Hack Nerd Font Mono: size=10: antialiasing=true
 Xft*dpi:          96
 Xft*antialias:    true
 Xft*hinting:      full

@@ -15,12 +15,6 @@ floating_modifier $mod
 # Start a URxvt terminal emulator instance
 bindsym $mod+Return exec urxvt
 
-# vscode, files, browser, notes shortcuts
-bindsym $mod+c exec code
-bindsym $mod+n exec thunar
-bindsym $mod+t exec typora
-bindsym $mod+b exec firefox
-
 # Kill focused window
 bindsym $mod+q kill
 
