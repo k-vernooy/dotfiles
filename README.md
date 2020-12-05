@@ -1,6 +1,6 @@
 # k-vernooy/dotfiles
 
-![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg) ![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)
+<img src=https://forthebadge.com/images/badges/works-on-my-machine.svg height=30px> <img src=https://forthebadge.com/images/badges/powered-by-black-magic.svg height=30px>
 
 ## About
 My dotfile organization repository! Contains config files for my current i3/Ubuntu setup. This is currently working in **Ubuntu 20.04**, but I assume it should work (with modification) on other distros.
