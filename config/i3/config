@@ -21,6 +21,8 @@ bindsym $mod+q kill
 # Start rofi drun menu
 bindsym $mod+space exec ~/Scripts/rofi/launch.sh drun 
 
+bindsym $mod+Tab exec ~/Scripts/rofi/tabmenu.sh
+
 # Bind key to betterlockscreen (-git)
 bindsym --release $mod+l exec betterlockscreen -l blur
 
@@ -154,10 +156,6 @@ exec_always --no-startup-id xinput set-prop 12 284 1 > /dev/null 2>&1
 exec_always --no-startup-id pkill picom; picom --no-use-damage
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# Increase screen contrast (disable for better displays)
-exec_always --no-startup-id xrandr --output eDP --gamma 0.8:0.8:0.8
-
 # Use URxvt settings from Xresources
 exec_always --no-startup-id xrdb ~/.Xresources
-
 exec --no-startup-id pulseaudio --start

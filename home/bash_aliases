@@ -9,6 +9,7 @@ alias copy='xclip -sel clip'
 alias ffchrome='cd /home/kai/.mozilla/firefox/gjd69y6g.default-release/chrome'
 
 alias vim="nvim"
+alias vimrc="vim ~/.config/nvim/init.vim"
 alias v="vim"
 alias s="sudo"
 alias ydl="youtube-dl"

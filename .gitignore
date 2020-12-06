@@ -1,0 +1,3 @@
+config/nvim/autoload/
+config/nvim/plugged/
+.netrwhist
