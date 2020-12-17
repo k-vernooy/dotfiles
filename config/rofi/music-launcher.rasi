@@ -1,8 +1,8 @@
 configuration {
     modi: "window,run,drun";
-    theme: "clean";
+    theme: "music";
     show-icons: true;
-    font: "Hack 10";
+    font: "Hack Nerd Font 11";
 }
 
 @import "colors.rasi"
@@ -26,9 +26,9 @@ configuration {
 }
 
 #listview {
-    padding: 20px 0 0 0;
-    columns: 4;
-    spacing: 4px;
+    padding: 18px 0px 2px 0px;
+    columns: 5;
+    spacing: 2px;
     cycle: false;
     dynamic: true;
     layout: vertical;
@@ -36,24 +36,24 @@ configuration {
 }
 
 element {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 4px;
+    padding: 8px;
+    border-radius: 4px;
     orientation: vertical;
 }
 
 element-icon {
-    size: 180px;
-    margin: 0 10px 0 0;
+    size: 195px;
+    margin: 0 0 0 0;
 }
 
 element-text {
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
 }
 
 #element.normal.normal {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     text-color:       @foreground;
 }
 
@@ -64,7 +64,7 @@ element-text {
 }
 
 #element.alternate.normal {
-    background-color: rgba(0,0,0,0);
+    background-color: transparent;
     text-color:       @foreground;
 }
 

@@ -15,7 +15,6 @@ set whichwrap+=<,>,[,]
 set noshowmode
 set cmdheight=1
 set laststatus=1
-set mouse=a
 
 " Clear highlighted search with Ctrl+L
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>

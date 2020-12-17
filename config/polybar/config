@@ -105,7 +105,7 @@ label-foreground = ${colors.tertiary}
 
 [module/wlan]
 type = internal/network
-interface = wlp7s0
+interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -159,7 +159,7 @@ label-muted-foreground = ${colors.secondary}
 [module/battery]
 type = internal/battery
 battery = BAT1
-adapter = ADP1
+adapter = ADP0
 full-at = 98
 
 format-charging = <ramp-capacity>
@@ -189,7 +189,7 @@ type = custom/text
 format-spacing = 1
 content = 
 content-foreground = ${colors.alert}
-click-left = bash ~/Scripts/rofi/launch.sh powermenu
+click-left = bash ~/scripts/rofi/launch.sh powermenu
 
 
 [settings]

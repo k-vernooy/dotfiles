@@ -1,6 +1,10 @@
 # Set mod variable to super key
 set $mod Mod4
 
+# Set common scripts to vars
+set $rofi ~/scripts/rofi/launch.sh
+set $music ~/scripts/music/mpv-controller.sh
+
 # Turn borders off
 for_window [class="^.*"] border pixel 0
 
@@ -18,17 +22,14 @@ bindsym $mod+Return exec urxvt
 # Kill focused window
 bindsym $mod+q kill
 
-# Start rofi drun menu
-bindsym $mod+space exec ~/Scripts/rofi/launch.sh drun 
-
-bindsym $mod+Tab exec ~/Scripts/rofi/tabmenu.sh
-
-# Bind key to betterlockscreen (-git)
-bindsym --release $mod+l exec betterlockscreen -l blur
+# Start rofi with appmenu and tabmenu
+bindsym $mod+space exec $rofi appmenu
+bindsym $mod+Tab exec $rofi tabmenu
+bindsym $mod+Shift+e exec $rofi powermenu
 
 # Set up screenshots and partial screenshots
-bindsym --release Print exec maim ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release Shift+Print exec maim -s ~/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Print exec maim ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Shift+Print exec maim -s ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Bind audio keys to pactl volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
@@ -36,8 +37,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Bind brightness keys to light interface
-bindsym XF86MonBrightnessUp exec sudo light -A 5
-bindsym XF86MonBrightnessDown exec sudo light -U 5
+bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/radeon_bl0 -A 5
+bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/radeon_bl0 -U 5
 
 # Move focus with the arrow keys
 bindsym $mod+Left focus left
@@ -103,9 +104,6 @@ bindsym $mod+Shift+c reload
 # Restart i3 inplace
 bindsym $mod+Shift+r restart
 
-# Exit i3
-bindsym $mod+Shift+e exec ~/Scripts/rofi/launch.sh powermenu
-
 # Add resize keybindings in place of mode
 bindsym $mod+Control+Left resize shrink width 10 px or 10
 bindsym $mod+Control+Down resize grow height 10 px or 10
@@ -117,19 +115,18 @@ bindsym $mod+Shift+Control+Up resize shrink height 1 px or 1
 bindsym $mod+Shift+Control+Right resize grow width 1 px or 1
 
 # mpv music controller bindings
-set $controller ~/Scripts/mpv-controller.sh
-bindsym $mod+Shift+P exec $controller pause
-bindsym $mod+Shift+bracketleft exec $controller prev
-bindsym $mod+Shift+bracketright exec $controller next
-bindsym $mod+Shift+semicolon exec $controller skip -10
-bindsym $mod+Shift+apostrophe exec $controller skip 10
-bindsym $mod+Shift+comma exec $controller skipper -5
-bindsym $mod+Shift+period exec $controller skipper 5
-bindsym $mod+Shift+m exec ~/Scripts/rofi/launch.sh music
-bindsym $mod+Shift+l exec $controller stop
-bindsym $mod+Shift+o exec $controller info
-bindsym $mod+Shift+minus exec $controller vol -10
-bindsym $mod+Shift+equal exec $controller vol 10
+bindsym $mod+Shift+P exec $music pause
+bindsym $mod+Shift+bracketleft exec $music prev
+bindsym $mod+Shift+bracketright exec $music next
+bindsym $mod+Shift+semicolon exec $music skip -10
+bindsym $mod+Shift+apostrophe exec $music skip 10
+bindsym $mod+Shift+comma exec $music skipper -5
+bindsym $mod+Shift+period exec $music skipper 5
+bindsym $mod+Shift+m exec $rofi music
+bindsym $mod+Shift+l exec $music stop
+bindsym $mod+Shift+o exec $music info
+bindsym $mod+Shift+minus exec $music vol -10
+bindsym $mod+Shift+equal exec $music vol 10
 
 # Always float certain windows
 for_window [class="mpv"] floating enable
@@ -140,22 +137,19 @@ exec_always xset +fp /home/kai/.fonts/
 exec_always xset fp rehash
 
 # Run startup wallpaper
-exec_always bash -c "feh --bg-fill $(cat ~/Scripts/default-bg.txt | tr -d '\n')"
+exec_always bash -c "feh --bg-fill $(cat ~/scripts/misc/default-bg.txt | tr -d '\n')"
 
 # Allow scripts to interface with dbus
-exec_always --no-startup-id ~/Scripts/Xdbus.sh
+exec_always --no-startup-id ~/scripts/misc/Xdbus.sh
 
 # Start notification daemon
-exec_always --no-startup-id dunst
-
-# Enable tap to click - will need to change input
-# device id and property number. See [link] for more
-exec_always --no-startup-id xinput set-prop 12 284 1 > /dev/null 2>&1
 
 # Startup daemons for compositor and status bar
 exec_always --no-startup-id pkill picom; picom --no-use-damage
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id pkill dunst; dunst
 
 # Use URxvt settings from Xresources
 exec_always --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id pulseaudio --start
+exec --no-startup-id pulseaudio -k; pulseaudio --start
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+

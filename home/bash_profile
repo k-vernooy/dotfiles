@@ -1,30 +1,20 @@
 # Export fet.sh info
 export info='n user up mem os wm sh term kern col n'
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 
 # Set env vars
 export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:/sbin
-export EDITOR="vim"
+export EDITOR="nvim"
 export HISTSIZE=-1
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export HISTFILESIZE=-1
 
 
+# Get terminal message
 . ~/.bash_motd
 
 
-md() {
-    . ~/Venv/bin/activate
-    youtube-dl -o "~/Music/%(title)s|%(id)s.%(ext)s" -x -- "$1"
-    # TODO: DOWNLOAD THUMBNAIL HERE
-    deactivate
-}
-
-mkdcd() {
-    mkdir $1
-    cd $1
-}
-
+# Set up dev environments
 webp() {
     mkdir assets assets/css assets/js assets/img
     touch index.html assets/css/index.css
@@ -40,5 +30,5 @@ bashstat() {
 }
 
 mu() {
-    mpv --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/Music/*  
+    mpv --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/music/*  
 }

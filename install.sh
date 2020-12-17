@@ -21,6 +21,6 @@ for i in $(ls ${dir}/home); do
     ln -s ${dir}/home/${i} ${HOME}/.${i}
 done
 
-ln -s ${dir}/scripts/ ${HOME}/Scripts/
+ln -s ${dir}/scripts/ ${HOME}/scripts/
 
 echo "You're on your own for installing the nonstandard stuff in /apps/, individual apps in that dir may have instructions if I've gotten around to it..."

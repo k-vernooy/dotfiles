@@ -2,7 +2,7 @@ configuration {
     modi: "window,run,drun";
     theme: "clean";
     show-icons: true;
-    font: "Hack 10";
+    font: "Hack Nerd Font 10";
 }
 
 @import "colors.rasi"
