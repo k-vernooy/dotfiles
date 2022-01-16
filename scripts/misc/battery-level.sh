@@ -7,8 +7,8 @@ PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 batteryLimit=$1
 
 # Get the current battery level with acpi
-batteryLevel=$(acpi | cut -d ' ' -f 4 | tr -d '%|,| ')
-charging=$(acpi | cut -d ' ' -f 3 | tr -d ',| ')
+batteryLevel=$(acpi | grep -v 'unavailable' | cut -d ' ' -f 4 | tr -d '%|,| ')
+charging=$(acpi | grep -v 'unavailable' | cut -d ' ' -f 3 | tr -d ',| ')
 
 # Must have the Xdus file to run in a cron job. If this is not
 # necessary functionality, this can be ignored, otherwise one must
