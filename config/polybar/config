@@ -9,11 +9,11 @@ alert = #ed404c
 
 
 [bar/main]
-width = 100%:-48
-offset-x = 24
-offset-y = 24
+width = 100%:-58
+offset-x = 29
+offset-y = 29
 
-height = 36
+height = 44
 radius = 0.0
 
 override-redirect = true
@@ -27,8 +27,8 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 1
 
-font-0 = Hack Nerd Font:pixelsize=11:antialias=true;2.5
-font-1 = Hack Nerd Font:style=Regular:pixelsize=17:antialias=true;3
+font-0 = Hack Nerd Font:pixelsize=12.5:antialias=true;3
+font-1 = Hack Nerd Font:style=Regular:pixelsize=20:antialias=true;5
 
 modules-left = i3
 modules-center = xwindow
@@ -68,8 +68,8 @@ ws-icon-0 = "0;0  "
 ws-icon-1 = "1;%{T2}%{T-}  "
 ws-icon-2 = "2;%{T2}%{T-}  "
 ws-icon-3 = "3;  "
-ws-icon-4 = "4;4  "
-ws-icon-5 = "5;5  "
+ws-icon-4 = "4;ﭮ  "
+ws-icon-5 = "5;  "
 ws-icon-6 = "6;6  "
 ws-icon-7 = "7;7  "
 ws-icon-8 = "8;  "
@@ -158,7 +158,7 @@ label-muted-foreground = ${colors.secondary}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
+battery = BAT0
 adapter = ADP0
 full-at = 98
 
