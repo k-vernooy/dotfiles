@@ -1,6 +1,6 @@
 configuration {
     modi: "window,run,drun";
-    theme: "clean";
+    /*theme: "clean";*/
     show-icons: true;
     font: "Hack Nerd Font 10";
 }
@@ -8,12 +8,10 @@ configuration {
 @import "colors.rasi"
 
 * {
-    selected-background: #d8c45d;
-    selected-foreground: black;
 }
 
 #window {
-    width: 450px;
+    width: 350px;
     height: 120px;
     background-color: @background-solid;
     padding: 5px;
@@ -27,7 +25,7 @@ configuration {
 }
 
 #listview {
-    columns: 4;
+    columns: 3;
     layout: vertical;
     background-color: transparent;
 }
@@ -78,4 +76,11 @@ element-text {
 #button.selected {
     background-color: @selected-background;
     text-color:       @selected-foreground;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
 }

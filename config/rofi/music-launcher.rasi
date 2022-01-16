@@ -1,24 +1,27 @@
 configuration {
     modi: "window,run,drun";
-    theme: "music";
     show-icons: true;
-    font: "Hack Nerd Font 11";
+    font: "Hack Nerd Font 15";
 }
 
 @import "colors.rasi"
+
+* {
+    selected-foreground: black;
+}
 
 #window {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 90px 120px;
+    padding: 140px 180px;
 }
 
 #mainbox {
     border:  0;
-    border-radius: 15;
-    padding: 20;
-    background-color: @background;
+    border-radius: 22;
+    padding: 50;
+    background-color: @background-solid;
 }
 
 #textbox {
@@ -26,30 +29,31 @@ configuration {
 }
 
 #listview {
-    padding: 18px 0px 2px 0px;
     columns: 5;
-    spacing: 2px;
+    spacing: 0px;
     cycle: false;
     dynamic: true;
     layout: vertical;
     background-color: transparent;
+    padding: 15 0 0 0;
 }
 
 element {
-    margin: 4px;
-    padding: 8px;
-    border-radius: 4px;
+    margin: 10 10 30 10;
+    padding: 15 20 20 20; /**/
+    border-radius: 16px;
     orientation: vertical;
 }
 
 element-icon {
-    size: 195px;
+    size: 205px;
     margin: 0 0 0 0;
+    padding: 25;
 }
 
 element-text {
-    horizontal-align: 0.5;
-    vertical-align: 0.5;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
 }
 
 #element.normal.normal {
@@ -86,10 +90,10 @@ element-text {
 #inputbar {
     spacing: 0;
     text-color: @selected-foreground;
-    padding: 10px;
+    padding: 18px;
     background-color: @selected-background;
-    /*rgba(0,0,0,0.5);*/
-    border-radius: 10px;
+    border-radius: 18px;
+    margin: 2 0 20 0;
 }
 
 #case-indicator {
@@ -120,4 +124,12 @@ element-text {
 
 #inputbar {
     children: [prompt,textbox-prompt-colon,entry,case-indicator];
+}
+
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
 }

@@ -1,10 +1,10 @@
 * {
     foreground:           rgba(196, 203, 212, 100%);
-    selected-foreground:  rgba(255, 255, 255, 100%);
+    selected-foreground:  rgba(0, 0, 0, 100%);
     
     background:           #1f243aa0; 
     background-solid:     #1f243aff; 
-    selected-background:  rgba(0, 0, 0, 40%);
+    selected-background:  #fe6c5a; /*#f9b578; *rgba(0, 0, 0, 40%);*/
 
     /*#87b5d7;*/  
     /*#6eacda;*/
