@@ -4,14 +4,17 @@ set $mod Mod4
 # Set common scripts to vars
 set $rofi ~/scripts/rofi/launch.sh
 set $music ~/scripts/music/mpv-controller.sh
+set $light ~/scripts/misc/backlight.sh  
+set $volume /usr/bin/pulseaudio-ctl
+
 
 # Turn borders off
 for_window [class="^.*"] border pixel 0
 
 # Change gap size
-gaps outer 4
-gaps inner 20
-gaps top 62
+gaps outer 5
+gaps inner 24
+gaps top 73
 
 # Drag floating windows
 floating_modifier $mod
@@ -27,18 +30,42 @@ bindsym $mod+space exec $rofi appmenu
 bindsym $mod+Tab exec $rofi tabmenu
 bindsym $mod+Shift+e exec $rofi powermenu
 
+# Enable keybindings for notifications
+#bindsym --release Control+space exec dunstctl close
+bindsym --release Control+Shift+space exec dunstctl close-all
+bindsym --release Control+grave exec dunstctl history-pop
+
+
 # Set up screenshots and partial screenshots
 bindsym --release Print exec maim ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym --release Shift+Print exec maim -s ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Bind audio keys to pactl volume control
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume        exec $volume up 10
+bindsym XF86AudioLowerVolume        exec $volume down 10
+bindsym XF86AudioMute               exec $volume mute
+bindsym Shift+XF86AudioRaiseVolume  exec $volume up
+bindsym Shift+XF86AudioLowerVolume  exec $volume down
+bindsym Shift+XF86AudioMute         exec $volume mute
+
+bindsym $mod+Control+x              exec $volume up 10
+bindsym $mod+Control+z              exec $volume down 10
+bindsym $mod+Control+Shift+x        exec $volume up
+bindsym $mod+Control+Shift+z        exec $volume down
+bindsym $mod+Control+m              exec $volume mute
+
 
 # Bind brightness keys to light interface
-bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/radeon_bl0 -A 5
-bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/radeon_bl0 -U 5
+bindsym $mod+x                             exec $light inc 15
+bindsym $mod+z                             exec $light dec 15
+bindsym $mod+Shift+x                       exec $light inc 5
+bindsym $mod+Shift+z                       exec $light dec 5
+
+bindsym $mod+XF86MonBrightnessUp           exec $light inc 15
+bindsym $mod+XF86MonBrightnessDown         exec $light dec 15
+bindsym $mod+Shift+XF86MonBrightnessUp     exec $light inc 5
+bindsym $mod+Shift+XF86MonBrightnessDown   exec $light dec 5
+
 
 # Move focus with the arrow keys
 bindsym $mod+Left focus left
@@ -51,6 +78,8 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+h exec xrandr-invert-colors
 
 # Split in specified direction
 bindsym $mod+h split h
@@ -105,10 +134,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Add resize keybindings in place of mode
-bindsym $mod+Control+Left resize shrink width 10 px or 10
-bindsym $mod+Control+Down resize grow height 10 px or 10
-bindsym $mod+Control+Up resize shrink height 10 px or 10
-bindsym $mod+Control+Right resize grow width 10 px or 10
+bindsym $mod+Control+Left resize shrink width 40 px or 40
+bindsym $mod+Control+Down resize grow height 40 px or 40
+bindsym $mod+Control+Up resize shrink height 40 px or 40
+bindsym $mod+Control+Right resize grow width 40 px or 40
 bindsym $mod+Shift+Control+Left resize shrink width 1 px or 1
 bindsym $mod+Shift+Control+Down resize grow height 1 px or 1
 bindsym $mod+Shift+Control+Up resize shrink height 1 px or 1
@@ -131,6 +160,9 @@ bindsym $mod+Shift+equal exec $music vol 10
 # Always float certain windows
 for_window [class="mpv"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueberry.py"] floating enable
+for_window [class="htevis"] floating enable
+for_window [class="sim"] floating enable
 
 # Make sure fonts are loaded right
 exec_always xset +fp /home/kai/.fonts/
@@ -140,7 +172,7 @@ exec_always xset fp rehash
 exec_always bash -c "feh --bg-fill $(cat ~/scripts/misc/default-bg.txt | tr -d '\n')"
 
 # Allow scripts to interface with dbus
-exec_always --no-startup-id ~/scripts/misc/Xdbus.sh
+exec_always --no-startup-id ~/scripts/misc/xdbus.sh
 
 # Start notification daemon
 
@@ -150,6 +182,8 @@ exec_always --no-startup-id pkill dunst; dunst
 
 # Use URxvt settings from Xresources
 exec_always --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id pulseaudio -k; pulseaudio --start
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+exec_always --no-startup-id rm ~/home/kai/scripts/misc/backlight-lockfile
+
+exec --no-startup-id xset r rate 250 20
