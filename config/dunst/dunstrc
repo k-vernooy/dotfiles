@@ -8,9 +8,17 @@
     # Follow monitor with mouse
     follow = mouse
 
-    # The geometry of the window
-    #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "270x6-24+68"
+    width = 300
+    # height = 260
+    origin = top-right
+    offset = 35x85
+
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+
 
     # Show how many messages are hidden
     indicate_hidden = yes
@@ -21,12 +29,10 @@
     # The transparency of the window.
     transparency = 1
 
-    # Set height to padding + font size
-    notification_height = 0
-
     # Draw a line between multiple notifications
-    separator_height = 3
-    separator_color = "#ffffffaa"
+    separator_height = 4
+
+    separator_color = "#1e2137aa"
 
     # Set notification padding
     padding = 16
@@ -46,7 +52,7 @@
 
     # Set the font
     # font = "Noto Sans 11"
-    font = "Hack Nerd Font 9.5"
+    font = "Hack Nerd Font 11"
 
     # Set line height to font height
     line_height = 0
@@ -103,10 +109,10 @@
     icon_position = left
 
     # Scale small icons up to this size, set to 0 to disable.
-    min_icon_size = 0
+    min_icon_size = 60
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 40
+    max_icon_size = 60
 
     # Paths to default icons.
     icon_path = /home/kai/.icons/Reversal-blue/apps/scalable:/usr/share/icons/Adwaita/256x256/legacy/
@@ -137,12 +143,6 @@
     # Define the class of the windows spawned by dunst
     class = Dunst
 
-    # Avoid printing a notification on startup
-    startup_notification = false
-
-    # Manage dunst's desire for talking
-    verbosity = mesg
-
     # Define the corner radius of the notification window
     corner_radius = 0
 
@@ -165,26 +165,12 @@
 [experimental]
     per_monitor_dpi = false
 
-
-[shortcuts]
-    # Close notification.
-    close = ctrl+space
-
-    # Close all notifications.
-    close_all = ctrl+shift+space
-
-    # Redisplay last message(s).
-    history = ctrl+grave
-
-    # Context menu.
-    context = ctrl+shift+period
-
-
-# --- Colors --- #
-
 [urgency_low]
     background = "#1e2137fa"
-    foreground = "#ffffffff"
+    highlight = "#fe6c5a"
+    frame_color = "#52426e"
+    
+    foreground = "#ffffff"
     timeout = 8
 
 [urgency_normal]
