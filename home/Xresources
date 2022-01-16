@@ -1,11 +1,11 @@
 ! basic configuration
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
-URxvt.internalBorder: 14
+URxvt.internalBorder: 18
 URxvt.urlLauncher: firefox
 
 ! font options
-URxvt.font:       xft:Hack Nerd Font Mono: size=10: antialiasing=true
+URxvt.font:       xft:Hack Nerd Font Mono: size=12.5: antialiasing=true
 Xft*dpi:          96
 Xft*antialias:    true
 Xft*hinting:      full
@@ -65,6 +65,5 @@ urxvt*depth:32
 
 ! urxvt*background:rgba:0250/1100/1b00/dddd
 ! urxvt*background:rgba:1500/1800/2600/fa00
-urxvt*background:rgba:1e00/2100/3700/fa00
-
-! urxvt*background: #17273e
+! urxvt*background:rgba:01e00/2100/3700/fa00
+urxvt*background:rgba:2400/1a00/3800/fa00

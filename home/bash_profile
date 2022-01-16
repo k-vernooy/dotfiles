@@ -5,9 +5,14 @@ export info='n user up mem os wm sh term kern col n'
 # Set env vars
 export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:/sbin
 export EDITOR="nvim"
+
 export HISTSIZE=-1
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export HISTFILESIZE=-1
+
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export OPENCV_LOG_LEVEL=ERROR
+export SUMO_HOME="/home/kai/dev/ii/iintersection/lib/sumo/"
+export FOX_INCLUDE_DIR=/usr/include/fox-1.6/
 
 
 # Get terminal message
