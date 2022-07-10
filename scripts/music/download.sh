@@ -3,35 +3,33 @@
 SONG=$1
 MUSIC="$HOME/music"
 
+checkM="$2"
+checkT="$3"
+name='%(title)s'
 
-if [ -z "$2" ]; then
-    DM=1
-else
-    DM="$2"
+if [ "$2" == "-n" ] || [ "$2" == "--name" ]; then
+    name="$3"
+    checkM="$4"
+    checkT="$5"
 fi
 
-if [ -z "$3" ]; then
-    DT=1
-else
-    DT="$3"
-fi
+if [ -z "$checkM" ]; then DM=1; else DM="$checkM"; fi
+if [ -z "$checkT" ]; then DT=1; else DT="$checkT"; fi
 
 
 . $HOME/venv/bin/activate
 
 
 if [ "$DM" -eq 1 ]; then
-    youtube-dl -o "$MUSIC/%(title)s|%(id)s.%(ext)s" -x -- "$SONG"
+   yt-dlp -f "bestaudio" --extract-audio -o "$MUSIC/$name|%(id)s.%(ext)s" -- "$SONG"
 fi
 if [ "$DT" -eq 1 ]; then
-    youtube-dl --write-thumbnail --skip-download -o "$MUSIC/thumbs/%(title)s|%(id)s.%(ext)s" -- "$SONG"
+    yt-dlp --write-thumbnail --skip-download -o "$MUSIC/thumbs/$name|%(id)s.%(ext)s" -- "$SONG"
 
     oldFile=$(ls "$MUSIC/thumbs" | grep -- "$(echo "$1" | cut -d '=' -f 2)") 
-    
+    echo "oldfile $oldFile" 
     mask="${oldFile%.*}-MASK.png"
     newFile="${oldFile%.*}.png"
-
-    WIDTH=100;
 
     W=$(identify -format "%[w]" "$MUSIC/thumbs/$oldFile")
     H=$(identify -format "%[h]" "$MUSIC/thumbs/$oldFile")
@@ -59,5 +57,8 @@ if [ "$DT" -eq 1 ]; then
     rm "${MUSIC}/thumbs/${oldFile}" "$MUSIC/thumbs/$mask"
 fi
 
+
+echo "tagging $(ls "$MUSIC" | grep -- "$(echo "$1" | cut -d '=' -f 2)")"
+python3 ~/music/metadata/tag.py add "$MUSIC/$(ls "$MUSIC" | grep -- "$(echo "$1" | cut -d '=' -f 2)")"
 
 deactivate
