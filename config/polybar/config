@@ -1,10 +1,14 @@
 [colors]
-background = #fa1e2137 
+background = #141929 
 foreground = #e3eaf3
-primary = #02c084
-secondary = #65a2d9
+primary = #d295f6
+secondary = #5c94e0
 tertiary = #d07ef2
-fourth = #e5c246
+fourth = #ec7377
+fifth = #d2595d
+#fifth = #89d077
+#fifth = #fdd284
+
 alert = #ed404c
 
 
@@ -13,7 +17,7 @@ width = 100%:-58
 offset-x = 29
 offset-y = 29
 
-height = 44
+height = 53
 radius = 0.0
 
 override-redirect = true
@@ -22,13 +26,14 @@ wm-restack = i3
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-padding-left = 1
-padding-right = 2
+padding-left = 2
+padding-right = 3
 module-margin-left = 2
 module-margin-right = 1
 
-font-0 = Hack Nerd Font:pixelsize=12.5:antialias=true;3
-font-1 = Hack Nerd Font:style=Regular:pixelsize=20:antialias=true;5
+font-0 = Hack Nerd Font:pixelsize=13:antialias=true;3
+font-1 = Hack Nerd Font:style=Regular:pixelsize=21:antialias=true;4.5
+font-2 = Hack Nerd Font:style=Regular:pixelsize=15:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
@@ -64,7 +69,7 @@ reverse-scroll = false
 fuzzy-match = true
 
 ws-icon-default = "  "
-ws-icon-0 = "0;0  "
+ws-icon-0 = "0;%{T3}%{T-}  "
 ws-icon-1 = "1;%{T2}%{T-}  "
 ws-icon-2 = "2;%{T2}%{T-}  "
 ws-icon-3 = "3;  "
@@ -78,15 +83,15 @@ ws-icon-9 = "9;  "
 format = <label-state>
 
 label-focused = %icon%
-label-focused-foreground = ${colors.fourth}
-label-focused-padding = 1
+label-focused-foreground = ${colors.fifth}
+label-focused-padding = 6px
 
 label-unfocused = ${self.label-focused}
-label-unfocused-foreground = #0a7383
+label-unfocused-foreground = #3a456b
 label-unfocused-padding = ${self.label-focused-padding}
 
 label-visible = ${self.label-focused}
-label-visible-foreground = #0a7383
+label-visible-foreground = #3a456b
 label-visible-padding = ${self.label-focused-padding}
 
 label-urgent = ${self.label-focused}
@@ -105,7 +110,7 @@ label-foreground = ${colors.tertiary}
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
