@@ -1,2 +1,4 @@
 set completion-ignore-case on
 
+## rxvt, xterm
+"\b":backward-kill-word

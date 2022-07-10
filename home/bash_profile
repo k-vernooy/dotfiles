@@ -1,7 +1,6 @@
 # Export fet.sh info
 export info='n user up mem os wm sh term kern col n'
 
-
 # Set env vars
 export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:/sbin
 export EDITOR="nvim"
@@ -35,5 +34,7 @@ bashstat() {
 }
 
 mu() {
-    mpv --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/music/*  
+    mpv --script=~/.config/mpv/scripts-manual/notify.lua --input-ipc-server=/tmp/mpv-socket --shuffle -- ~/music/*
+    #find ~/music/ -maxdepth 1 -type f | egrep '/[^/]{0,65}$' | shuf | tr '\n' '\0' | xargs -0 mpv --input-ipc-server=/tmp/mpv-socket --shuffle --
 }
+

@@ -1,3 +1,62 @@
 #!/bin/bash
 
-echo "Nothing here right now until I have a good idea, submit a PR if you have something interesting to add!" > /dev/null
+#                                        |
+#                                 .     -O-
+#                      .                 |        *      .     -0-
+#                             *  o     .    '       *      .        o
+#                                    .         .        |      *
+#                         *             *              -O-          .
+#                               .             *         |     ,
+#                                      .           o
+#
+
+
+# stars=("." "*" "'" "o" "O" '+')
+# colors=('\x1b[31m' '\x1b[32m' '\x1b[37m' '\x1b[35m' '\x1b[36m')
+
+# next=true
+# nextcount=0
+
+# starwidth=$(($(tput cols) - 6))
+
+# echo
+
+# tput sc
+# for row in {1..6}; do
+#     for col in $(seq $(($(tput cols) - 6))); do
+#         printf ' '
+#     done
+# done
+# tput rc
+
+
+# for row in {1..6}; do
+#     tput cuf 3
+#     for col in $(seq "$starwidth"); do
+        
+#         centerdist=$(( ("$starwidth" / 2 ) - col ))
+#         centerdist=$(( ${centerdist#-} + 6))
+
+#         if [ $(($RANDOM % "$centerdist")) -eq 0 ] && [ "$next" == "true" ]; then
+#             star="${stars[$RANDOM % ${#stars[@]}]}"
+#             echo -ne "${colors[$RANDOM % ${#colors[@]}]}$star"
+#             next=false
+#             nextcount=0
+#         else
+#             nextcount=$(($nextcount + 1))
+#             if [ "$nextcount" -gt 4 ]; then
+#                 next="true"
+#             fi
+
+#             printf ' '
+#         fi
+#     done
+#     printf '   '
+
+#     printf '\n'
+# done
+# echo
+
+
+# see k-vernooy/trekscii
+trekscii 14 $(tput cols)

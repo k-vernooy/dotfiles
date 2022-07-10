@@ -24,6 +24,7 @@ alias feh="devour feh"
 alias zathura="devour zathura"
 alias thunar="devour thunar"
 
+alias wmht="''mpv 'https://wmht.streamguys1.com/wmht1'"
 
 alias open="xdg-open"
 alias copy="xclip -sel clip"
@@ -34,9 +35,13 @@ alias xr-config="vim ~/.Xresources && xrdb ~/.Xresources"
 
 alias br="urxvt&"
 
+alias iz="cd ~/dev/in-the-zone/"
+
 alias reset="reset && . ~/.bash_profile"
 alias ffchrome="cd ~/.mozilla/firefox/uumogs28.deifault-release/chrome"
 alias audio-reset="puleaudio -k && sudo alsa force-reload && pulseaudio --start"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias wttr="curl -s wttr.in | head -n 7 | tail -n 6; printf '\n'"
+alias wttr="curl -s wttr.in | head -n 7 | tail -n 6 | cut -c 3-; printf '\n'"
 alias wallpaper="feh --randomize --no-fehbg --bg-fill"
+
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
