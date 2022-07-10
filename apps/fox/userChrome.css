@@ -1,8 +1,9 @@
 :root {
     --accent: white;
     --main-bg: #141929;
+    --main-bg: #111524;
     --dark-bg: #0d1120;
-    --light-bg: #161c2f;
+    --light-bg: #171c2a;
 
     --primary: #39a7fe;
     --primary-alt: #0675dd;
@@ -21,6 +22,11 @@
 element {
   --lwt-sidebar-text-color: rgba(255, 255, 255, 0.5);
 }
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon:-moz-lwtheme, .tab-background[selected]:-moz-lwtheme {
+  outline: none !important;
+}
+
 
 #folderTree > treechildren::-moz-tree-row {
   height: 19px !important;
