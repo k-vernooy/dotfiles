@@ -2,3 +2,4 @@ config/nvim/autoload/
 config/nvim/plugged/
 .netrwhist
 config/mpv/watch_later
+images/wall/nongit

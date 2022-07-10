@@ -2,7 +2,7 @@
 
 subinc=2
 subchange=$(echo "1 / $subinc" | bc -l)
-delay=$(echo "(0.02 / $2)/$subinc" | bc -l)
+delay=0.001
 opt=""
 
 
@@ -42,6 +42,9 @@ for i in $(seq $2); do
         sleep "$delay"
     done
         
+    current=$(light)
+    truncated=$(echo "$current" | cut -d '.' -f1)
+
     
-    dunstify "Brightness at ${truncated}%" -i $(getIcon "$truncated") -a "Backlight" -u low -h "int:value:$current" -h string:x-dunst-stack-tag:backlight
+    dunstify "Brightness at ${truncated}%" -i $(getIcon "$truncated") -a "Backlight" -u normal -h "int:value:$current" -h string:x-dunst-stack-tag:backlight
 done
