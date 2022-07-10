@@ -38,21 +38,26 @@ orig=$("$ctl" current | tr -d '%')
 subinc=5
 
 
+# stackoverflow magic 
+# https://askubuntu.com/questions/1266769/find-device-description-of-default-sink-from-pulseaudio
+currDevice=$(pacmd list-sinks | grep -Pzo "\* index(.*\n)*" | sed \$d | grep -e "device.description" | cut -f2 -d\")
+
+
 if [ "$1" == "mute" ]; then
     opt="mute"
     "$ctl" "$opt"
 else
     if [ "$1" == "inc" ]; then
         opt="up"
-        if ![ -z "$2" ]; then val="$2"; fi
+        if [ "$2" != '' ]; then val="$2"; fi
 
     elif [ "$1" == "dec" ]; then
         opt="down"
-        if ![ -z "$2" ]; then val="$2"; fi
+        if [ "$2" != '' ]; then val="$2"; fi
 
     fi
     
-    "$ctl" "$opt" "$val"
+    "$ctl" "$opt" "$val" &
     
     # Fake the animated volume
     for i in $(seq "$val"); do
@@ -70,13 +75,20 @@ else
             exit 1
         fi
         
-        dunstify -i "$(getIcon)" -u low -h string:x-dunst-stack-tag:volume -a "Volume" "Volume at ${current}%" -h "int:value:${current}"
+        dunstify -i "$(getIcon)" -u normal -h string:x-dunst-stack-tag:volume -a "$currDevice" "Volume at ${current}%" -h "int:value:${current}"
     done
 
 fi
 
 current=$("$ctl" current | tr -d '%')
-dunstify -i "$(getIcon)" -u low -h string:x-dunst-stack-tag:volume -a "Volume" "Volume at $current" -h "int:value:${current}"
+mute=$("$ctl" full-status | cut -d ' ' -f2)
+ntext="Volume at $current%"
+
+if [ "$mute" == "yes" ]; then
+    ntext="Volume muted"
+fi
+
+dunstify -i "$(getIcon)" -u normal -h string:x-dunst-stack-tag:volume -a "$currDevice" "$ntext" -h "int:value:${current}"
 
 
 rm "$lockfile"
