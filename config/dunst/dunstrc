@@ -10,11 +10,12 @@
 
     width = 300
     # height = 260
-    origin = top-right
-    offset = 35x85
+    origin = bottom-right
+    offset = 24x24
+
 
     progress_bar = true
-    progress_bar_height = 10
+    progress_bar_height = 14
     progress_bar_frame_width = 1
     progress_bar_min_width = 150
     progress_bar_max_width = 300
@@ -30,9 +31,9 @@
     transparency = 1
 
     # Draw a line between multiple notifications
-    separator_height = 4
+    separator_height = 6
 
-    separator_color = "#1e2137aa"
+    separator_color = "#272f57"
 
     # Set notification padding
     padding = 16
@@ -109,15 +110,14 @@
     icon_position = left
 
     # Scale small icons up to this size, set to 0 to disable.
-    min_icon_size = 60
+    min_icon_size = 50
 
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 60
 
     # Paths to default icons.
-    icon_path = /home/kai/.icons/Reversal-blue/apps/scalable:/usr/share/icons/Adwaita/256x256/legacy/
-
-
+    icon_path = /usr/share/icons/kora/apps/scalable:/usr/share/icons/kora/status/scalable:/usr/share/icons/kora/actions/scalable:/usr/share/icons/kora/emblems/scalable:/usr/share/icons/kora/devices/scalable
+ 
     # --- History --- #
 
     # Avoid timing out hidden notifications
@@ -166,20 +166,43 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#1e2137fa"
-    highlight = "#fe6c5a"
-    frame_color = "#52426e"
-    
-    foreground = "#ffffff"
+    background = "#131a31f0"
+    highlight = "#6fa6e7"
+    frame_color = "#272f57"
+    foreground = "#dae1f2"
     timeout = 8
 
 [urgency_normal]
-    background = "#1e2137fa"
-    foreground = "#ffffffff"
+    background = "#131a31f0"
+    highlight = "#5ca1ff"
+    #highlight = "#39a7fe"
+    # highlight = "#fe6c5a"
+
+    frame_color = "#272f57"
+    foreground = "#dae1f2"
     timeout = 8
 
 [urgency_critical]
-    background = "#dd130ddd"
-    foreground = "#ffffff"
+    #background = "#dd130ddd"
+    background = "#5ca1ffff"
+    highlight = "#fe6c5a"
+    #foreground = "#ffffff"
+    foreground = "#1c2138"
+    frame_color = "#52426e"
     timeout = 0
-    icon = abrt
+    icon = battery-ac-adapter
+    # icon = abrt
+
+[backlight]
+    appname = "Backlight"
+    highlight = "#fc7b80"
+
+[music]
+    appname = "Music"
+
+[volume]
+    summary = "Volume*"
+    highlight = "#cb8cf4"
+
+[battery]
+    appname = "Power Warning"
