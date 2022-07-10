@@ -2,16 +2,38 @@
     foreground:           rgba(196, 203, 212, 100%);
     selected-foreground:  rgba(0, 0, 0, 100%);
     
-    background:           #1f243aa0; 
-    background-solid:     #1f243aff; 
-    selected-background:  #fe6c5a; /*#f9b578; *rgba(0, 0, 0, 40%);*/
+    background:           #1f243aa0;
+    background-solid:     #131a31fd;
+    background-solid:     #1c1f36ff;
+    background-solid:     #141929;
+    
+    // a8b0d5
+
+    /*
+       selected-background:  #fe6c5a;
+       selected-background:  #1994fd;
+    */
+
+    // **** green
+    selected-background: #5dbe88;    
+
+    selected-background: #e3ad63;
+    selected-background: #6e8fe9;
+    selected-background: #6fa6e7;
+
+    selected-background: #6092d9;
+    selected-background-alt: #4d86d3;
+    selected-background-gradient: linear-gradient(#6092d9, #4d86d3);
 
     /*#87b5d7;*/  
     /*#6eacda;*/
     /*#deca72;*/
     /*#39c9fe;*/
-
-    red:                  rgba ( 220, 50, 47, 100 % );
-    blue:                 rgba ( 38, 139, 210, 100 % );
+    
+    
+    unselected-background:  #0d1120;
+    
+    red: rgba(220, 50, 47, 100%);
+    blue: rgba(38, 139, 210, 100%);
 }
 

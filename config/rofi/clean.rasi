@@ -30,45 +30,55 @@ configuration {
 
 #listview {
     columns: 5;
-    spacing: 0px;
+    spacing: 20px;
     cycle: false;
     dynamic: true;
     layout: vertical;
     background-color: transparent;
-    padding: 12px 0px 0px 0px;
+    // padding: 20px -10px -20px -10px;
+    padding: 30px 0px 0px 0;
 }
 
 element {
-    margin: 10px 0 10 0;
+    // margin: 10px 10px 10px 10px;
     padding: 34px;
     border-radius: 16px;
     orientation: vertical;
 }
 
-element-icon {
-    size: 140px;
+#element.normal.normal, element.alternate.normal {
+    background-color: @unselected-background;
+    text-color:       @foreground;
+    size: 0px;
+    // border: 1px solid;
+    // border-color: @unselected-border;
 }
 
-element-text {
+#element-icon {
+    size: 140px;
+    background: transparent;
+}
+
+#element-text {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
 }
 
-#element.normal.normal {
+#element-text.normal {
     background-color: transparent;
-    text-color:       @foreground;
-    size: 0px;
 }
 
+#element-icon.normal {
+    background-color: transparent;
+}
+
+// $blue: #00bfff;
+// $green: #2dffae;
 #element.selected.normal {
-    background-color: @selected-background;
+    background-image: @selected-background-gradient;
+    // background-color: @selected-background;
     text-color:       @selected-foreground;
     border-color: #d07ef2;
-}
-
-#element.alternate.normal {
-    background-color: transparent;
-    text-color:       @foreground;
 }
 
 #mode-switcher {
@@ -91,7 +101,8 @@ element-text {
     text-color: @selected-foreground;
     margin-bottom: 50px;
     padding: 20px;
-    background-color: @selected-background;
+    background-image: @selected-background-gradient;
+    // background-color: @selected-background;
     /*rgba(0,0,0,0.5);*/
     border-radius: 18px;
 }

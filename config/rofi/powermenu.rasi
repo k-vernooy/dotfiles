@@ -1,20 +1,18 @@
 configuration {
-    modi: "window,run,drun";
-    /*theme: "clean";*/
+    // modi: "window,run,drun";
     show-icons: true;
     font: "Hack Nerd Font 10";
 }
 
+
 @import "colors.rasi"
 
-* {
-}
 
 #window {
-    width: 350px;
-    height: 120px;
+    width: 360px;
+    height: 130px;
     background-color: @background-solid;
-    padding: 5px;
+    padding: 10px;
 }
 
 #mainbox {
@@ -33,7 +31,7 @@ configuration {
 element {
     margin: 8px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 8px;
     orientation: vertical;
 }
 
@@ -47,20 +45,26 @@ element-text {
     vertical-align: 0.5;
 }
 
-#element.normal.normal {
-    background-color: rgba(0, 0, 0, 0);
+#element.normal.normal, element.alternate.normal {
+    background-color: @unselected-background;
     text-color:       @foreground;
+    size: 0px;
+}
+
+#element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+#element-text.normal, element-icon.normal {
+    background-color: transparent;
 }
 
 #element.selected.normal {
-    background-color: @selected-background;
+    background-image: @selected-background-gradient;
+    // background-color: @selected-background;
     text-color:       @selected-foreground;
     border-color: #d07ef2;
-}
-
-#element.alternate.normal {
-    background-color: rgba(0,0,0,0);
-    text-color:       @foreground;
 }
 
 #mode-switcher {
