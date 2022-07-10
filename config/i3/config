@@ -5,7 +5,8 @@ set $mod Mod4
 set $rofi ~/scripts/rofi/launch.sh
 set $music ~/scripts/music/mpv-controller.sh
 set $light ~/scripts/misc/backlight.sh  
-set $volume /usr/bin/pulseaudio-ctl
+#set $volume /usr/bin/pulseaudio-ctl
+set $volume ~/scripts/misc/volume.sh
 
 
 # Turn borders off
@@ -14,7 +15,8 @@ for_window [class="^.*"] border pixel 0
 # Change gap size
 gaps outer 5
 gaps inner 24
-gaps top 73
+#gaps left 220
+gaps top 83
 
 # Drag floating windows
 floating_modifier $mod
@@ -37,21 +39,21 @@ bindsym --release Control+grave exec dunstctl history-pop
 
 
 # Set up screenshots and partial screenshots
-bindsym --release Print exec maim ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym --release Shift+Print exec maim -s ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Print exec maim -u ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym --release Shift+Print exec maim -u -s ~/images/scrots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Bind audio keys to pactl volume control
-bindsym XF86AudioRaiseVolume        exec $volume up 10
-bindsym XF86AudioLowerVolume        exec $volume down 10
+bindsym XF86AudioRaiseVolume        exec $volume inc 10
+bindsym XF86AudioLowerVolume        exec $volume dec 10
 bindsym XF86AudioMute               exec $volume mute
-bindsym Shift+XF86AudioRaiseVolume  exec $volume up
-bindsym Shift+XF86AudioLowerVolume  exec $volume down
+bindsym Shift+XF86AudioRaiseVolume  exec $volume inc
+bindsym Shift+XF86AudioLowerVolume  exec $volume dec
 bindsym Shift+XF86AudioMute         exec $volume mute
 
-bindsym $mod+Control+x              exec $volume up 10
-bindsym $mod+Control+z              exec $volume down 10
-bindsym $mod+Control+Shift+x        exec $volume up
-bindsym $mod+Control+Shift+z        exec $volume down
+bindsym $mod+Control+x              exec $volume inc 10
+bindsym $mod+Control+z              exec $volume dec 10
+bindsym $mod+Control+Shift+x        exec $volume inc
+bindsym $mod+Control+Shift+z        exec $volume dec
 bindsym $mod+Control+m              exec $volume mute
 
 
@@ -61,10 +63,10 @@ bindsym $mod+z                             exec $light dec 15
 bindsym $mod+Shift+x                       exec $light inc 5
 bindsym $mod+Shift+z                       exec $light dec 5
 
-bindsym $mod+XF86MonBrightnessUp           exec $light inc 15
-bindsym $mod+XF86MonBrightnessDown         exec $light dec 15
-bindsym $mod+Shift+XF86MonBrightnessUp     exec $light inc 5
-bindsym $mod+Shift+XF86MonBrightnessDown   exec $light dec 5
+bindsym XF86MonBrightnessUp           exec $light inc 15
+bindsym XF86MonBrightnessDown         exec $light dec 15
+bindsym Shift+XF86MonBrightnessUp     exec $light inc 5
+bindsym Shift+XF86MonBrightnessDown   exec $light dec 5
 
 
 # Move focus with the arrow keys
@@ -104,40 +106,40 @@ bindsym $mod+bracketright workspace next
 bindsym $mod+bracketleft workspace prev
 
 # Switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+t reload
 
 # Restart i3 inplace
 bindsym $mod+Shift+r restart
 
 # Add resize keybindings in place of mode
-bindsym $mod+Control+Left resize shrink width 40 px or 40
-bindsym $mod+Control+Down resize grow height 40 px or 40
-bindsym $mod+Control+Up resize shrink height 40 px or 40
-bindsym $mod+Control+Right resize grow width 40 px or 40
+bindsym $mod+Control+Left resize shrink width 40 px
+bindsym $mod+Control+Down resize grow height 40 px
+bindsym $mod+Control+Up resize shrink height 40 px
+bindsym $mod+Control+Right resize grow width 40 px
 bindsym $mod+Shift+Control+Left resize shrink width 1 px or 1
 bindsym $mod+Shift+Control+Down resize grow height 1 px or 1
 bindsym $mod+Shift+Control+Up resize shrink height 1 px or 1
@@ -147,13 +149,14 @@ bindsym $mod+Shift+Control+Right resize grow width 1 px or 1
 bindsym $mod+Shift+P exec $music pause
 bindsym $mod+Shift+bracketleft exec $music prev
 bindsym $mod+Shift+bracketright exec $music next
-bindsym $mod+Shift+semicolon exec $music skip -10
-bindsym $mod+Shift+apostrophe exec $music skip 10
-bindsym $mod+Shift+comma exec $music skipper -5
-bindsym $mod+Shift+period exec $music skipper 5
-bindsym $mod+Shift+m exec $rofi music
+bindsym $mod+Shift+semicolon exec $music seek -10
+bindsym $mod+Shift+apostrophe exec $music seek 10
+bindsym $mod+Shift+comma exec $music seek-percent -5
+bindsym $mod+Shift+period exec $music seek-percent 5
+bindsym $mod+Shift+m exec $rofi filebrowser ~/music
+bindsym $mod+Shift+n exec $rofi filebrowser ~/docs/media
 bindsym $mod+Shift+l exec $music stop
-bindsym $mod+Shift+o exec $music info
+bindsym $mod+Shift+o exec $music notif
 bindsym $mod+Shift+minus exec $music vol -10
 bindsym $mod+Shift+equal exec $music vol 10
 
@@ -163,13 +166,15 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class="htevis"] floating enable
 for_window [class="sim"] floating enable
+for_window [class="Matplotlib"] floating enable
+for_window [class="plank"] floating enable
 
 # Make sure fonts are loaded right
-exec_always xset +fp /home/kai/.fonts/
+exec_always xset +fp ~/.fonts/
 exec_always xset fp rehash
 
 # Run startup wallpaper
-exec_always bash -c "feh --bg-fill $(cat ~/scripts/misc/default-bg.txt | tr -d '\n')"
+exec_always bash -c "feh --bg-fill $(cat ~/scripts/misc/default-bg.txt | head -n 1 | tr -d '\n')"
 
 # Allow scripts to interface with dbus
 exec_always --no-startup-id ~/scripts/misc/xdbus.sh
@@ -184,6 +189,15 @@ exec_always --no-startup-id pkill dunst; dunst
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-exec_always --no-startup-id rm ~/home/kai/scripts/misc/backlight-lockfile
-
+exec_always --no-startup-id rm ~/scripts/misc/backlight-lockfile
+exec_always --no-startup-id rm ~/scripts/misc/volume-lockfile
 exec --no-startup-id xset r rate 250 20
+
+bindsym $mod+Shift+k exec eww -c ~/.config/eww/mpc open --toggle mpc
+
+bindsym $mod+d [class="discord"] scratchpad show
+exec_always --no-startup-id discord
+for_window[class="discord"] move to scratchpad; move position center
+
+bindsym $mod+c scratchpad show
+bindsym $mod+Shift+c move to scratchpad; move position center
