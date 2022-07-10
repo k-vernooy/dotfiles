@@ -1,8 +1,13 @@
 ! basic configuration
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
-URxvt.internalBorder: 18
+URxvt.internalBorder: 32
 URxvt.urlLauncher: firefox
+
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
 
 ! font options
 URxvt.font:       xft:Hack Nerd Font Mono: size=12.5: antialiasing=true
@@ -19,37 +24,41 @@ Xft*hinting:      full
 *.cursorColor: #eeeeee
 
 ! black
-*.color0: #263640
-*.color8: #4a697d
+*.color0: #262e47
+*.color8: #262e47
 
 ! red
-*.color1: #e35430
-*.color9: #e35430
+*.color1: #e46368
+*.color9: #e46368
 
 ! green
-*.color2: #f5d65a
-*.color10: #f5d65a 
+*.color2:   #fa7a80
+*.color10: #fa7a80
 ! #57ab33
 
+
+!f2d472 (light yellow)
+
+
 ! yellow
-*.color3: #f2a846
-*.color11: #f2a846
+*.color3: #ffa578
+*.color11: #ffa578
 
 ! blue
-*.color4: #5692d6
-*.color12: #5692d6
+*.color4: #5c94e0
+*.color12: #5c94e0
 
 ! magenta
-*.color5: #976eff
-*.color13: #976eff
+*.color5: #d295f6
+*.color13: #d295f6
 
 ! cyan
-*.color6: #83bdde
-*.color14: #83bdde
+*.color6: #95bef8
+*.color14: #95bef8
 
 ! white
-*.color7: #e0e8f3
-*.color15: #e0e8f3
+*.color7: #e4e9ff
+*.color15: #e4e9ff
 
 ! Enable normal copy/paste
 URxvt.iso14755:        false
@@ -66,4 +75,29 @@ urxvt*depth:32
 ! urxvt*background:rgba:0250/1100/1b00/dddd
 ! urxvt*background:rgba:1500/1800/2600/fa00
 ! urxvt*background:rgba:01e00/2100/3700/fa00
-urxvt*background:rgba:2400/1a00/3800/fa00
+
+! (old purp) urxvt*background:rgba:2400/1a00/3800/fa00
+
+!urxvt*background:rgba:1300/1a00/3100/fa00
+!urxvt*background:rgba:1c00/2100/3800/ff00
+!urxvt*background:rgba:2300/2700/3000/ff00
+!urxvt*background:rgba:1a00/2100/3200/ff00
+urxvt*background:rgba:1400/1900/2900/ff00
+
+! 141929
+! 1a2132
+! 1b212f
+! #232730
+! 1f2333
+! 1c1f36
+! 181b2c
+! 16192a
+! 191c2e
+! 1b2135
+! #181c2a
+
+! #161d33
+! #111426
+! #0f1930
+!
+!
