@@ -1,0 +1,17 @@
+set guioptions none
+map [normal] v feedkeys ":set guioptions v<Return>"
+map <C-v> feedkeys ":set guioptions none<Return>"
+
+map <C-i> recolor
+
+
+
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+
+set recolor-keephue true
+#set recolor-lightcolor \#131a31
+set recolor-lightcolor \#141929
+#set default-bg \#131a31
+set default-bg \#141929
