@@ -1,8 +1,9 @@
 # k-vernooy/dotfiles
 <img src=https://forthebadge.com/images/badges/works-on-my-machine.svg height=30px> <img src=https://forthebadge.com/images/badges/powered-by-black-magic.svg height=30px>
+
 A dotfile organization repository for my current i3/Arch setup!
 
-![Desktop Image](images/scrots/current/rice.png)
+![Desktop Image](images/scrots/current/summary.png)
 
 ## About
 
@@ -29,14 +30,17 @@ A dotfile organization repository for my current i3/Arch setup!
 
 #### Custom firefox theme & startpage
 ![Firefox theme](images/scrots/current/fox.png)
+
 Styled via `userChrome.css`, new tab page set with `autoconfig.cfg`.
 
 #### Music Player
 ![Music player](images/scrots/current/music.png)
+
 The player window is a widget built in eww, and the visualizer is an overlayed GLava window. This music player uses a custom metadata storage system. I'm still in the process of cleaning up the script and workflow for tagging music, and when it's uploaded it will be highly specific to my use-case (primarily classical music). If you're looking for something that's likely more appropriate for your setup, I'd suggest a spotify/mpris-based music player [here](https://github.com/Syndrizzle/hotfiles#an-eww-based-music-player-popup-to-control-your-music-get-synced-lyrics-and-even-a-visualizer), also using eww.
 
 #### Styled Notifs
 ![Notifications](images/scrots/current/dunst.png)
+
 The rounded/gradient progress bars are achieved with a custom fork at [k-vernooy/dunst](https://github.com/k-vernooy/dunst). The relevant changes can be found on the `progress-styling` branch, and building is as simple as `make && sudo make install` in the root directory of the repository, provided normal dunst dependencies are installed.
 
 
