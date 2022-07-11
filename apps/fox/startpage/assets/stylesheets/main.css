@@ -4,24 +4,9 @@
 }
 
 :root {
-	--bg: #161d34;
-/* 
-	--bg: #191c2e;
-	--bg: #16192a;
-	--bg: #1c1f36;
-	--bg: #232730;*/
-
-	/* --bg: #1f2333; */
-	--bg: #1c2138;
-	--bg: #202020;
-	--bg: #1a2132;
-	--bg: #131d31;
 	--bg: #141929;
-	/* --bg: #151b2c; */
-	/* --fg: #b365e7; */
 	
 	--red: #e46368;
-	/* --old: #ff8c90; */
 	--green: #65d67d;
 	--yellow: #f2c075;
 	--blue: #a8b0d5;
@@ -29,12 +14,6 @@
 	--cyan: #72abfb;
 	--fg: #d3d6db;
 	--grey: #383f47;
-
-
-	/* --primary: #478de7;
-	--primary-alt: #4d86d3; */
-	/* --secondary: #65d67d;
-	--secondary-alt: #1bb385; */
 
 	--primary: #d3d6db;
 	--primary-alt: #a8b0d5;
@@ -44,30 +23,19 @@
 	--prim-gradient: linear-gradient(90deg, var(--primary), var(--primary-alt));
 	--secondary-gradient: linear-gradient(90deg, var(--secondary), var(--secondary-alt));
 
-	--redfilter: brightness(0) saturate(100%) invert(68%) sepia(6%) saturate(3701%) hue-rotate(325deg) brightness(89%) contrast(70%);
+	/* --redfilter: brightness(0) saturate(100%) invert(68%) sepia(6%) saturate(3701%) hue-rotate(325deg) brightness(89%) contrast(70%);
 	--greenfilter: brightness(0) saturate(100%) invert(68%) sepia(51%) saturate(417%) hue-rotate(81deg) brightness(98%) contrast(90%);
 	--yellowfilter: brightness(0) saturate(100%) invert(93%) sepia(87%) saturate(7176%) hue-rotate(307deg) brightness(105%) contrast(90%);
 	--bluefilter: brightness(0) saturate(100%) invert(59%) sepia(76%) saturate(3840%) hue-rotate(185deg) brightness(101%) contrast(99%);
 	--magentafilter: brightness(0) saturate(100%) invert(65%) sepia(52%) saturate(3826%) hue-rotate(220deg) brightness(102%) contrast(105%);
-	--cyanfilter: brightness(0) saturate(100%) invert(82%) sepia(31%) saturate(5191%) hue-rotate(163deg) brightness(103%) contrast(98%);
+	--cyanfilter: brightness(0) saturate(100%) invert(82%) sepia(31%) saturate(5191%) hue-rotate(163deg) brightness(103%) contrast(98%); */
 }
 
-@font-face {
-	font-family: "Soleil";
-	src: url("../fonts/soleil/Soleil-Regular.otf");
-}
-
-@font-face {
-	font-family: "Avenir";
-	src: url("../fonts/avenir/avenir-light.ttc");
-}
 
 body {
 	background-color: var(--bg);
 	color: white;
 	text-align: center;
-	font-family: "Soleil";
-	/* overflow: hidden; */
 }
 
 
@@ -90,7 +58,6 @@ body {
 	margin-right: auto;
 	width: 100%;
 	text-align: center;
-	/* background-color: red; */
 }
 
 h2 {
@@ -163,22 +130,6 @@ h2 {
 	fill: url(#grad4)
 }
 
-#reddit {
-	filter: var(--yellowfilter);
-}
-
-#youtube {
-	filter: var(--redfilter);
-}
-
-#gmail {
-	filter: var(--magentafilter);
-}
-
-#github {
-	filter: var(--cyanfilter);
-}
-
 #searchwrapper {
 	display: inline-block;
 	text-align: center;
@@ -189,9 +140,7 @@ h2 {
 	margin-top: 40px;
 	border-radius: 14px;
 	position: relative;
-	/* z-index:1; */
 }
-
 
 #searchshadow {
 	position: absolute;
@@ -203,7 +152,6 @@ h2 {
 	transform: translate(8px, 8px);
 	border-radius: 14px;
 	z-index:-2;
-
 	transition: .2s all;
 }
 
@@ -213,19 +161,12 @@ input:focus + #searchshadow {
 
 input {
 	all: unset;
-	/* margin-top: 40px; */
 	font-family: 'Fira Code';
 	background-color: var(--bg);
 	padding: 15px;
-	/* border: 6px solid var(--blue); */
-	/* padding: 0px; */
 	border-radius: 10px;
 	text-align: left;
-	/* box-shadow: 6px 6px 0px var(--green); */
 	width: calc(100% - 30px);
 	height: calc(100% - 30px);
 	z-index:2;
 }
-/* 
-#sites:first-child {
-} */
