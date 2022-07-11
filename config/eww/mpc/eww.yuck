@@ -1,0 +1,64 @@
+(defpoll art :interval ".2s" "~/scripts/music/mpv-controller.sh thumb")
+(defpoll filename :interval ".2s" "~/scripts/music/mpv-controller.sh title")
+(defpoll title :interval ".2s" "~/scripts/music/mpv-controller.sh get TITLE")
+(defpoll artist :interval ".2s" "~/scripts/music/mpv-controller.sh get ARTISTS-FMT")
+(defpoll composer :interval ".2s" "~/scripts/music/mpv-controller.sh get COMPOSER")
+(defpoll barscontent :interval ".2s" "~/.config/eww/mpc/get_bars.sh bar")
+(defpoll movement :interval ".2s" "~/.config/eww/mpc/get_bars.sh title")
+(defpoll paused :interval ".2s" "~/scripts/music/mpv-controller.sh getmpv pause")
+
+
+(defwidget progress-segment [width prog ?hidden]
+	(box :class "inner" :width width :space-evenly false
+		(eventbox :onclick "" :class "progress" :style {hidden ? "background: transparent" : ""} :width {prog - 6})))
+
+(defwidget segmented-progress [width height content]
+	(box :class "cont" :halign "center" :valign "center" :vexpand true :width width :height height :space-evenly false
+		; (box (progress-segment :width 406 :prog 359) )
+		(literal :content content)
+	))
+
+(defwidget art [?path]
+	(box :class "art-container"
+		(box :class "art" :valign "center" :halign "center" :width 200 :height 200 :style "background-image: url(\"${path}\");")))
+
+(defwidget circlebutton [?classadd text ?onclick]
+	(box :class "circlebutton-container ${classadd}" (button :cursor "pointer" :class "circlebutton" :width 70 :height 70 :onclick onclick text)))
+
+
+(defwindow mpc
+	:monitor 0
+	:geometry (geometry :x "0px"
+						:y "40px"
+						:width "650px"
+						:height "650px"
+						:anchor "center")
+	:windowtype "normal"
+	; :stacking "fg"
+	; :wm-ignore false
+
+
+	(box :orientation 'v' :valign "center" :vexpand false :space-evenly false
+		(label :class "title" :text { title == "" ? filename : "${composer} - ${title}" } :wrap true :width 100 :halign "center" :valign "center" :xalign 0.5)
+		; (segmented-progress :width 400 :height 20 :content barscontent)
+
+		(label :class "mvt-title" :text movement)
+		(label :class "artist-title" :text artist)
+		(box :class "controls-container" :orientation 'v' :halign "center" :space-evenly false
+			(box :orientation 'h' :halign "center" :space-evenly false
+				(art :path art)
+				(box :class "controls" :orientation 'h' :valign "end" :halign "center" :space-evenly true
+					(circlebutton :onclick "~/scripts/music/mpv-controller.sh prev" :classadd "small" :text "󰒮")
+					(circlebutton :onclick "~/scripts/music/mpv-controller.sh pause" :text {paused == "false" ? "󰏤" : "󰐊"})
+					(circlebutton :onclick "~/scripts/music/mpv-controller.sh next" :classadd "small" :text "󰒭"))
+			)
+			
+			(segmented-progress :width 495 :height 20 :content barscontent)
+		)
+				
+		; (box :class "separator" :halign "center" :valign "center" :orientation 'h' :width 140 :height 10)
+	)
+
+)
+	
+	

@@ -1,0 +1,195 @@
+* {
+    all: unset;
+    font-family: "FiraCode Nerd Font", "Material Design Icons Desktop";
+}
+
+$bg: #141929;
+$alt-bg: #0d1120;
+$fg: #1a2033;
+
+$alt-white: rgba(209, 229, 255, 0.808);
+
+// $blue: #00bfff;
+// $blue-alt: #39a7fe;
+
+$primary: #6092d9;
+$primary-alt: #4d86d3;
+
+$secondary: #fb7a7f;
+$secondary-alt: #df5e63;
+
+$tertiary: #c788f0;
+$tertiary-alt: #c687ef;
+
+$quaternary: #d3d6db;
+$quaternary-alt: #a8b0d5;
+
+// $primary-grad: linear-gradient(90deg, $blue, $green);  
+// $primary-grad: linear-gradient(90deg, #39a7fe, #39a7fe);
+
+$primary-grad: linear-gradient(90deg, $secondary, $secondary-alt);
+$secondary-grad: linear-gradient(90deg, $primary, $primary-alt);
+$tertiary-grad: linear-gradient(90deg, $tertiary, $tertiary-alt);
+$quaternary-grad: linear-gradient(90deg, $quaternary, $quaternary-alt);
+
+$grad-seq-1: $quaternary-grad;
+$grad-seq-2: $secondary-grad;
+$grad-seq-3: $tertiary-grad;
+
+
+window {
+    background-color: $bg;
+}
+
+.cont {
+    background: $primary-grad;
+    border-radius: 50px;
+    padding: 3px;
+    margin-top: 25px;
+    // box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.inner {
+    background: $fg;
+    border-radius: 20px;
+    padding: 3px;
+    margin-left: 0px;
+    margin-right: 2px;
+    transition: all .5s;
+}
+
+.cont :last-child {
+    margin-right: 0px;
+    // width: 20;
+}
+
+.cont :nth-child(3n + 1) .progress {
+    background: $grad-seq-3;
+}
+
+.cont :nth-child(3n + 2) .progress {
+    background: $grad-seq-1;
+}
+
+.cont :nth-child(3n + 3) .progress {
+    background: $grad-seq-2;
+}
+
+
+.progress {
+    background: $primary-grad;
+    border-radius: 20px;
+    transition: all .5s;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+}
+
+.title, .mvt-title, .artist-title {
+    margin: 20px;
+    transition: all .2s;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 500;
+    // background-color: red;
+    // text-align: center;
+}
+
+.mvt-title {
+    font-style: oblique;
+    color: $alt-white;
+    font-size: 20px;
+}
+
+.artist-title {
+    color: $alt-white;
+    font-size: 23px;
+    margin: 25px;
+}
+
+.separator {
+    background: $primary-grad;
+    border-radius: 15px;
+}
+
+.art {
+    // background-color: $blue;
+    background-color: $fg;
+    // border: 6px solid $bg;
+    background-size: 200px;
+    transition: all .2s;
+    border-radius: 22px;
+    box-shadow: 0px 0px 12px rgba(0,0,0,.3);
+}
+
+.art-container {
+    // margin: 25px;
+    margin-right: 30px;
+    padding: 10px;
+    background: $primary-grad;
+    border-radius: 26px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.circlebutton {
+    background: $secondary-grad;
+    margin: 8px;
+    border-radius: 100%;
+    color: $fg;
+    font-size: 45px;
+    transition: all .1s;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.circlebutton:hover {
+    color: $bg;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.1);
+    margin: 6px;
+    font-size: 48px;
+    // cursor: pointer;
+    // background: $bg;
+}
+
+.circlebutton:active {
+    margin: 9px;
+    font-size: 38px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.2);
+}
+
+.circlebutton-container.small .circlebutton:active {
+    font-size: 25px;
+}
+
+.circlebutton-container.small {
+    padding: 6px;
+    // border: 5px solid $bg;
+}
+
+.circlebutton-container.small .circlebutton {
+    font-size: 35px;
+}
+
+.circlebutton-container:nth-child(1) .circlebutton {
+    background: $quaternary-grad;
+}
+
+.circlebutton-container:nth-child(2) .circlebutton {
+    background: $tertiary-grad;
+}
+
+.circlebutton-container:nth-child(3) .circlebutton {
+    background: $quaternary-grad;
+}
+
+.controls {
+    margin-bottom: 8px;
+}
+
+.controls-container {
+    background-color: $alt-bg;
+    background-color: $fg;
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 4px 4px 12px rgba(0,0,0,.15);
+}
