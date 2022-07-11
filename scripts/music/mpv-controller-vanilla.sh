@@ -15,7 +15,7 @@ notifier="dunstify"
 notifyText=""
 img="gnome-music"
 
-musicDir="/home/kai/music"
+musicDir=~/music
 thumbs="/thumbs"
 
 # . ~/.bash_profile > /dev/null 2>&1

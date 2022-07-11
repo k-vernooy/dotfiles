@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ctl=/usr/bin/pulseaudio-ctl
-lockfile=/home/kai/scripts/misc/volume-lockfile
+lockfile=~/scripts/misc/volume-lockfile
 iconDir="$HOME/.icons/tmp"
 
 while [ -f "$lockfile" ]; do

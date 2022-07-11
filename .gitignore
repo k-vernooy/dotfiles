@@ -8,6 +8,9 @@ config/eww/bar/
 config/eww/dashboard/
 config/eww/tests/
 
+config/glava/*
+!config/glava/largebars*
+
 .netrwhist
 images/wall/nongit
 TODO.txt

@@ -1,7 +1,6 @@
 :root {
     --accent: white;
     --main-bg: #141929;
-    --main-bg: #111524;
     --dark-bg: #0d1120;
     --light-bg: #171c2a;
 
@@ -11,12 +10,16 @@
     --primary: #dc6971;
     --primary-alt: #dc6971;
 
-
     --primary-grad: linear-gradient(90deg, var(--primary), var(--primary-alt));
 
     --toolbar-bgcolor: var(--main-bg) !important;
     --lwt-sidebar-background-color: var(--dark-bg) !important;
     --lwt-sidebar-text-color: rgba(255, 255, 255, 0.5);
+}
+
+* {
+    font-family: "Hack Nerd Font" !important;
+    font-size: 14px !important;
 }
 
 element {
@@ -42,13 +45,6 @@ element {
 #nav-bar toolbarspring {
   min-width: 10px !important;
   max-width: 20px !important;
-}
-
-
-
-* {
-    font-family: "Hack Nerd Font" !important;
-    font-size: 14px !important;
 }
 
 

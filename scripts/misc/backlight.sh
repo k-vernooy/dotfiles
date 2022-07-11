@@ -8,13 +8,13 @@ opt=""
 
 getIcon() {
     if [ "$1" -eq 0 ]; then
-        echo "/home/kai/.icons/tmp/display-brightness-off-symbolic.svg"
+        echo "~/.icons/tmp/display-brightness-off-symbolic.svg"
     elif [ "$1" -lt 33 ]; then
-        echo "/home/kai/.icons/tmp/display-brightness-low-symbolic.svg"
+        echo "~/.icons/tmp/display-brightness-low-symbolic.svg"
     elif [ "$1" -lt 66 ]; then
-        echo "/home/kai/.icons/tmp/display-brightness-medium-symbolic.svg"
+        echo "~/.icons/tmp/display-brightness-medium-symbolic.svg"
     else
-        echo "/home/kai/.icons/tmp/display-brightness-high-symbolic.svg"
+        echo "~/.icons/tmp/display-brightness-high-symbolic.svg"
     fi
 
 }
