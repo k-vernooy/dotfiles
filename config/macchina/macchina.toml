@@ -1,0 +1,8 @@
+current_shell = true
+
+theme = "Carbon"
+
+
+#show = ["Battery", "Memory"]
+
+show = ["Distribution", "WindowManager", "Terminal", "Shell", "Uptime", "Packages"]

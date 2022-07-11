@@ -1,0 +1,70 @@
+spacing         = 2
+padding         = 0
+hide_ascii      = false
+#separator       = ""
+separator       = "~"
+key_color       = "Magenta"
+separator_color = "Green"
+
+
+[palette]
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+glyph = "   "
+#glyph = "靖  "
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+#glyph = "   "
+#glyph = "ﮋ   "
+#glyph = "   "
+#glyph = "   "
+
+
+type = "Light"
+visible = true
+
+[bar]
+glyph           = ""
+hide_delimiters = true
+visible         = true
+
+[box]
+border          = "plain"
+visible         = true
+
+[box.inner_margin]
+x               = 3
+y               = 1
+
+[custom_ascii]
+path = "~/.config/macchina/ascii"
+color = "Blue"
+
+[randomize]
+key_color       = false
+separator_color = false
+
+[keys]
+host            = "host"
+kernel          = "kern"
+battery         = "bat"
+os              = "os"
+de              = "de"
+wm              = "wm"
+distro          = "dist"
+terminal        = "term"
+shell           = "sh"
+packages        = "pack"
+uptime          = "up"
+memory          = "mem"
+machine         = "comp"
+local_ip        = "ip"
+backlight       = "back"
+resolution      = "res"
+cpu_load        = "cpu"
+cpu             = "proc"
